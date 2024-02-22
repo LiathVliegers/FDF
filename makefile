@@ -5,7 +5,7 @@ CC 		= cc
 CFLAGS 	= -Wall -Werror -Wextra
 HEADERS	= -I MLX42/include
 LIBS	= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm 
-SRC		= main.c
+SRC		= test_main.c
 OBJ		= $(SRC:.c=.o)
 
 all: $(NAME)
