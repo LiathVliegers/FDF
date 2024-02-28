@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:21:00 by livliege          #+#    #+#             */
-/*   Updated: 2024/02/27 18:52:35 by livliege         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:40:53 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,4 @@ char	*ft_itoa_pf(int n, char *str);
 char	*uitoa_converter(unsigned int n, char *str, size_t n_len);
 char	*ft_uitoa(unsigned int n, char *str);
 
-// extra:
-void	*ft_free_2d_array(char **twoD_array);
 #endif
