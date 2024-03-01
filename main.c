@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug_functions.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 19:55:40 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/01 16:29:22 by livliege         ###   ########.fr       */
+/*   Created: 2024/03/01 17:46:53 by livliege          #+#    #+#             */
+/*   Updated: 2024/03/01 17:58:04 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/lib_liath.h"
-#include "../inc/fdf.h"
 
+/*
+PLAN van aanpak:
 
-// void	print_int_map(int** map, int row, int col)
-// {
-// 	int 			x;
-// 	int 			y;
+1.	open file with the correct path 
+2.	parse the map:
+	- get total rows
+	- get total collumns
+	- malloc that shit and free when we're done
+	- atoi the string to ints and put in int** array
+	- make array of structs with x, y, z values of the points
+3.	
+4.	
+5.	
+6.	
+7.	
+8.	
+9.	
+10.	
+11.	
+12.	
+13.	
 
-// 	x = 0;
-// 	while (x < row)
-// 	{
-// 		y = 0;
-// 		while (y < col)
-// 		{
-// 			ft_printf("%d", map[x][y]);
-// 			y++;
-// 		}
-// 		ft_printf("\n");
-// 		x++;
-// 	}
-// }
+	not ideal to read the fd more than once
 
-
-
-
-// STRUCTS!
- 
-struct Point 
-{
-	int x;
-	int y;
-};
+*/

@@ -4,16 +4,15 @@ NAME				= fdf
 CC 					= cc
 # CFLAGS 				= -Wall -Werror -Wextra
 MLX_HEADERS			= -I lib/MLX42/include
-# MINILIBX_HEADERS 	= -I lib/minilibx-linux
 MY_HEADERS			= -I inc
 
 LIB_LIATH	= lib/lib_liath/lib_liath.a
 # 		MLX42:
-LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm 
+LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm #-fsanitize=address -g
 SRC					= src/extra_src/trial_main.c  #take this out!
 # SRC					= src/main.c \
 						src/load_map.c \
-						src/extra_src/debug_functions.c  #take this out!
+						# src/extra_src/debug_functions.c  #take this out!
 OBJ					= $(SRC:.c=.o)
 
 all: $(NAME)

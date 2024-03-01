@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:27:51 by livliege          #+#    #+#             */
-/*   Updated: 2024/02/28 20:14:10 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:39:50 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int main(int argc, char** argv)
 
 	if(argc != 2)
 	{
-		ft_printf("ERROR: No arguments given, please include a .fdf file from the maps directory as argument\n");
+		// ft_printf("ERROR: No arguments given, please include a .fdf file from the maps directory as argument\n");
+		ft_putstr_fd("ERROR BITCH\n", STDERR_FILENO);
 		return (0);
 	}
 

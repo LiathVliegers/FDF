@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:59:09 by livliege          #+#    #+#             */
-/*   Updated: 2024/02/27 12:08:04 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:11:21 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,19 @@ char	*ft_read(int fd, char *line_nlc_remainder)
 
 char	*get_next_line(int fd)
 {
-	static char	*substrings[FD_LIMIT + 1] = {NULL};
+	static char	*substring;
 	char		*next_line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= FD_LIMIT)
 		return (NULL);
-	substrings[fd] = ft_read(fd, substrings[fd]);
-	if (substrings[fd] == NULL)
+	substring = ft_read(fd, substring);
+	if (substring == NULL)
 		return (NULL);
-	next_line = ft_get_line(substrings[fd]);
+	next_line = ft_get_line(substring);
 	if (next_line == NULL)
 		return (NULL);
-	substrings[fd] = ft_get_remainder(substrings[fd]);
-	if (substrings[fd] == NULL)
+	substring = ft_get_remainder(substring);
+	if (substring == NULL)
 		return (NULL);
 	return (next_line);
 }

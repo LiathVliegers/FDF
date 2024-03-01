@@ -6,6 +6,7 @@
 # include <MLX42/MLX42.h>
 
 void	ft_load_map(int fd, int total_rows, int total_cols);
+// void	ft_load_map(int fd);
 int		ft_open_fd(char* file_name);
 
 

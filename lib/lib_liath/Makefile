@@ -50,9 +50,8 @@ SRC = \
 	src/ft_printf_number.c \
 	src/ft_printf_unsigned_number.c \
 	src/ft_printf.c \
-	src/get_next_line_utils_bonus.c \
-	src/get_next_line_bonus.c \
-	src/ft_free_2d_array.c
+	src/get_next_line_utils.c \
+	src/get_next_line.c
 
 OBJS = $(SRC:.c=.o)
 

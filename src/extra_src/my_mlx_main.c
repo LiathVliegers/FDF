@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_test_main.c                                     :+:      :+:    :+:   */
+/*   my_mlx_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:50:05 by livliege          #+#    #+#             */
-/*   Updated: 2024/02/28 18:31:21 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:45:18 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void error(void)
 
 
 // 
-int32_t	main(void)
+int32_t	main(int argc, char** argv)
 {
 	// Start mlx
 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
@@ -116,8 +116,8 @@ int32_t	main(void)
 	image1 = mlx_texture_to_image(mlx, texture1);
 	image2 = mlx_texture_to_image(mlx, texture2);
 	image3 = mlx_texture_to_image(mlx, texture3);
-	mlx_resize_image(image1, 300, 300);
-	mlx_resize_image(image2, 400, 400);
+	mlx_resize_image(image1, 500, 500);
+	mlx_resize_image(image2, 500, 500);
 	mlx_resize_image(image3, 500, 500);
 	
 	if (!image || !image1 || !image2|| !image3)
