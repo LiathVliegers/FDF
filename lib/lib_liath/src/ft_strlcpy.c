@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:51:06 by livliege          #+#    #+#             */
-/*   Updated: 2024/02/27 12:07:36 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:27:59 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ RETURN VALUES
      practice this should not happen (as it means that either size is incor‐
      rect or that dst is not a proper “C” string).  The check exists to pre‐
      vent potential security problems in incorrect code.
+!!!!!!!
+make sure you add a +1 to the length you want to copy to make sure there is space for the '\0'
 */
 
 #include "../../../inc/lib_liath.h"
