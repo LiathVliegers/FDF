@@ -9,10 +9,7 @@ MY_HEADERS			= -I inc
 LIB_LIATH	= lib/lib_liath/lib_liath.a
 # 		MLX42:
 LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm #-fsanitize=address -g
-SRC					= src/extra_src/trial_main.c  #take this out!
-# SRC					= src/main.c \
-						src/load_map.c \
-						# src/extra_src/debug_functions.c  #take this out!
+SRC					= src/main.c
 OBJ					= $(SRC:.c=.o)
 
 all: $(NAME)

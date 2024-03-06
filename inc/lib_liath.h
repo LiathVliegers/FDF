@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:21:00 by livliege          #+#    #+#             */
-/*   Updated: 2024/02/28 18:40:53 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:44:08 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
+size_t	ft_wordcount(char const *s, char c);
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);

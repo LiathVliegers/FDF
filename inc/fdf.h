@@ -2,16 +2,23 @@
 #ifndef FDF_H
 # define FDF_H
 
-# include <stdbool.h>
 # include <MLX42/MLX42.h>
+# include "lib_liath.h"
+// # include <stdbool.h>
+// # include <errno.h>
 
-void	ft_load_map(int fd, int total_rows, int total_cols);
-// void	ft_load_map(int fd);
-int		ft_open_fd(char* file_name);
+typedef struct s_map_data
+{
+	int height;
+	int width;
+	int **z_values;
+} t_map_data;
 
-
-
-// extra functions in the extra.c file:
-void	print_int_map(int** map, int row, int col);
+typedef struct s_vector
+{
+	int x;
+	int y;
+	int z;
+} t_vector;
 
 #endif
