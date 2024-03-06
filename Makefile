@@ -13,7 +13,9 @@ OBJDIR				= .obj
 SRC_DIR				= src
 SRC					= main.c \
 						parse_map.c \
-						memory.c \
+						map_dimensions.c \
+						create_map.c \
+						errors.c \
 						debugging.c
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
@@ -25,7 +27,9 @@ $(OBJDIR):
 
 $(NAME): $(OBJDIR) $(OBJ)
 	@$(CC) $(OBJ) $(LIBS) -o $(NAME)
-	@echo "Creating object files, static library file and fdf executable"
+	@echo "Creating object files."
+	@echo "Creating the lib_liath.a file."
+	@echo "Creating the fdf executable file."
 
 $(OBJDIR)/%.o : $(SRC_DIR)/%.c $(LIB_LIATH)
 	@$(CC) $(CFLAGS) $(MLX_HEADERS) $(MY_HEADERS) -o $@ -c $<
@@ -35,13 +39,13 @@ $(LIB_LIATH):
 
 clean: 
 	@-rm -rf $(OBJDIR)
-	@echo "Removing all object files"
 	@make clean -C lib/lib_liath/ -s
+	@echo "Removing all object files."
 
 fclean: clean
 	@-rm -f $(NAME)
-	@echo "Removing fdf executable"
 	@make fclean -C lib/lib_liath/ -s
+	@echo "Removing fdf executable."
 
 re: fclean all
 

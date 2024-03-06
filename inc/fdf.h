@@ -36,6 +36,7 @@ int get_map_width(char* file_path);
 void fill_map(int* z_value, char* line, t_map_data* map);
 void parse_map_file(char* file_path, t_map_data* map);
 void	validate_map_name(char *path, t_map_data* map);
+void	ft_exit(int error_code);
 
 
 

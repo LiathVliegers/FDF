@@ -68,7 +68,6 @@ $(OBJDIR)/%.o : $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $^
 
 clean:
-	@echo "Removing .obj directory with all object files"
 	@-rm -rf $(OBJDIR)
 
 fclean: clean
