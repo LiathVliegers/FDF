@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:46:53 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/06 13:42:53 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:15:05 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int get_height(char* file_path)
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
-		return (ft_putstr_fd("ERROR: empty map\n", STDERR_FILENO), 0);
+		ft_putstr_fd("ERROR: empty map\n", STDERR_FILENO);
+		exit(1);
 	}
 	while (line)
 	{
@@ -94,11 +95,17 @@ int get_height(char* file_path)
 	ft_printf("height: %d\n", height);
 	return (height);
 }
+// int get_width_per_line()
+// {
+	
+// }
+
 int get_width(char* file_path)
 {
 	int		i;
 	int		fd;
 	int		width;
+	int		new_width;
 	char	*line;
 	char	**split_line;
 	
@@ -108,25 +115,33 @@ int get_width(char* file_path)
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
-		return (ft_putstr_fd("ERROR: empty map\n", STDERR_FILENO), 0);
+		ft_putstr_fd("ERROR: empty map\n", STDERR_FILENO);
+		exit(1);
 	}
-	split_line = ft_split(line, ' ');
-	i = 0;
-	width = 0;
-	while (split_line[i] != NULL && split_line[i][0] != '\n')
-	{
-		width++;
-		free(split_line[i]);
-		i++;
+	new_width = 0;
+	while (line != NULL)
+	{	
+		split_line = ft_split(line, ' ');
+		i = 0;
+		width = 0;
+		while (split_line[i] != NULL)
+		{
+			if (split_line[i][0] != '\n')
+				width++;
+			free(split_line[i]);
+			i++;
+		}
+		free(split_line);
+		free(line);
+		ft_printf("width: %d\n", width);
+		line = get_next_line(fd);
+		if (new_width < width)
+		{
+			new_width = width;
+		}
 	}
-	// if (split_line[i][0] == '\n')
-	// // {
-	// // 	free(split_line[i]);
-	// // }
-	free(split_line);
-	free(line);
-	ft_printf("width: %d\n", width);
-	return (width);
+	ft_printf("max width = %d\n", new_width);
+	return (new_width);
 	// CHECK IF EVERY LINE IS THE SAME, IF NOT, UPDATE THE NEW WIDTH!
 }
 
@@ -156,16 +171,13 @@ void fill_map(int* z_value, char* line)
 	if (split_line == NULL)
 		return (ft_putstr_fd("ERROR: Memory allocation failed\n", STDERR_FILENO)); // exit?
 	i = 0;
-	while (split_line[i] != NULL  && split_line[i][0] != '\n')
+	while (split_line[i] != NULL)
 	{
-		z_value[i] = ft_atoi(split_line[i]);
+		if (split_line[i][0] != '\n')
+			z_value[i] = ft_atoi(split_line[i]);
 		free(split_line[i]);
 		i++;
 	}
-	// if (split_line[i][0] == '\n')
-	// {
-	// 	free(split_line[i]);
-	// }
 	free(split_line);
 }
 
@@ -176,16 +188,10 @@ void parse_file(char* file_path, t_map_data* map)
 	int		fd;
 	char	*line;
 	
-	line = NULL;
 	map->height = get_height(file_path);
-	if (map->height <= 0)
-		exit(1);
 	map->width = get_width(file_path);
-	if (map->width <= 0)
-		exit(1);
 	allocate_memory(map);
 	fd = open(file_path, O_RDONLY);
-
 	if (fd < 0)
 		return (ft_putstr_fd("ERROR: invalid fd\n", STDERR_FILENO));
 	i = 0;
@@ -204,21 +210,10 @@ void parse_file(char* file_path, t_map_data* map)
 	close(fd);
 }
 
-int main (int argc, char** argv)
+void free_map(t_map_data* map)
 {
-	t_map_data* map;
 	int i;
-
-	if (argc != 2)
-		return (ft_putstr_fd("ERROR: invalid fd\n", STDERR_FILENO), 1);
-	map = (t_map_data*)malloc(sizeof(t_map_data));
-	if (map == NULL)
-		return (ft_putstr_fd("ERROR: Memory allocation failed\n", STDERR_FILENO), 1);
-	parse_file(argv[1], map);
-
-	print_map(map);
 	
-	// Free allocated memory
 	i = 0;
     while (i < map->height) 
 	{
@@ -227,6 +222,22 @@ int main (int argc, char** argv)
     }
     free(map->z_values);
     free(map);
-	return (0);
+}
+
+int main (int argc, char** argv)
+{
+	t_map_data* map;
+
+	if (argc != 2)
+		return (ft_putstr_fd("ERROR: incorrect number of arguments\n", STDERR_FILENO), 1);
+	map = (t_map_data*)malloc(sizeof(t_map_data));
+	if (map == NULL)
+		return (ft_putstr_fd("ERROR: Memory allocation failed\n", STDERR_FILENO), 1);
+	parse_file(argv[1], map);
+
+	print_map(map);
+	free_map(map);
+	
+
 }
 
