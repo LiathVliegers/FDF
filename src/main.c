@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:46:53 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/06 21:05:41 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/07 20:42:29 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,19 @@ int	main (int argc, char** argv)
 	t_map_data* map;
 
 	if (argc != 2)
-		ft_exit(1);
+		ft_exit(1);	// 1: ERROR: Incorrect number of arguments
 
 	map = (t_map_data*)malloc(sizeof(t_map_data));
 	if (map == NULL)
-		ft_exit(2);
+		ft_exit(2);	// 2: ERROR: Memory allocation failed
 
 	parse_map_file(argv[1], map);
 	
 	print_map(map);
 	
-	create_window(map);
+	// create_window(map);
 	
-
 	free_map(map);
 }
+
+

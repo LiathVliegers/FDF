@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:47:44 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 16:23:29 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/07 21:09:14 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void print_map(t_map_data* map)
 		while (x < map->width)
 		{
 			ft_printf("%d ", map->points[y][x].z);
+			// ft_printf("%d ", map->points[y][x].colour);
 			x++;
 		}
 		ft_printf("\n");
 		y++;
 	}
 }
+

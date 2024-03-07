@@ -6,13 +6,12 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:50:05 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/01 16:45:18 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:57:42 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/lib_liath.h"
-#include "../inc/fdf.h"
-
+#include "../../inc/lib_liath.h"
+#include "../../inc/fdf.h"
 
 #include <stdio.h>
 #include <stdlib.h>

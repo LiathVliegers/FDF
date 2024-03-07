@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:47:42 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 16:22:49 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/07 21:52:21 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,27 @@ void parse_map_file(char* file_path, t_map_data* map)
 		ft_exit(3);
 	i = 0;
 	line = get_next_line(fd);
+	// protect get_next_line
 	while (line != NULL && i < map->height)
 	{
-		fill_map(map->points[i], line, map);
+		fill_map(map->points[i], line);
 		free(line);
 		i++;
 		line = get_next_line(fd);
 	}
 	free(line);
-	
-	// // TODO: CLOSE ALL FD'S IN A BETTER WAY, like this?:
-	// while (fd > 1)
-	// {
-	// 	close(fd);
-	// 	fd--;
-	// }
-	
-	close(3);
-	close(4);
 	close(fd);
 }
 
+void	ft_free_matrix(char **matrix)
+{
+	int i;
+
+	i = 0;
+	while (matrix[i] != NULL)
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
