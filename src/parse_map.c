@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:47:42 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/06 21:03:52 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:22:49 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void parse_map_file(char* file_path, t_map_data* map)
 	line = get_next_line(fd);
 	while (line != NULL && i < map->height)
 	{
-		fill_map(map->z_values[i], line, map);
+		fill_map(map->points[i], line, map);
 		free(line);
 		i++;
 		line = get_next_line(fd);

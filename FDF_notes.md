@@ -61,3 +61,9 @@ a = FF
 0x810202FF
 
 r << 24 | g << 16 | b << 8 | a;
+
+
+
+structs dereferencing   (:S)
+(*map).height			= map->height
+(*(points_row + i)).z	= points_row[i].z
