@@ -6,18 +6,14 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:36:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 21:53:32 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:31:05 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-/*
-	TODO's:
-	
-	PARSE COLOURS
-	CLOSE ALL FD'S IN A BETTER WAY 				// in function parse_file
-*/
+
+
 
 
 // 1: ERROR: Incorrect number of arguments
@@ -50,22 +46,3 @@ void	ft_exit(int error_code)
 	exit(1);
 }
 
-// VINCENTS TIPS:
-
-// void	exit_error(t_data *data, char *msg)
-// {
-// 	clean_up(data);
-// 	ft_putendl_fd(msg, STDERR_FILENO);
-// 	exit(EXIT_FAILURE);
-// }
-
-
-// void	*ft_malloc(t_data *data, size_t size)
-// {
-// 	void	*thingy;
-
-// 	thingy = malloc(size);
-// 	if (thingy == NULL)
-// 		exit_error(data, "malloc failed");
-// 	return (thingy);
-// }

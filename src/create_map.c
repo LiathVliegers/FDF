@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:50:19 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:17 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:20:57 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 
 void	validate_map_name(char *path, t_map_data* map)
 {
-    // int		i;
-
-	// i = ft_strlen(path) - 1;
-	// // TODO: GET MILAN TO BREAK MY MAP VALIDATION (because vincent couldn't muhahaha)
-	// if ((i + 1) < 4 || (!((path[i] == 'f') && (path[i - 1] == 'd') && (path[i - 2] == 'f') && (path[i - 3] == '.'))))
-	// 	ft_exit(4);
-    // if (ft_strrchr(path, '/'))
-	// 	path = ft_strrchr(path, '/') + 1;
-	// map->title = ft_strjoin("LIATH'S FDF!	map: ", path);
-
-// / -----------------------------------------
-
 	int		i;
 	int		j;
 
@@ -85,5 +73,4 @@ void fill_map(t_point* points_row, char* line)
 	}
 	ft_free_matrix(split_line);
 }
-
 

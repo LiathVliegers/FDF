@@ -6,11 +6,18 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:46:50 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/13 11:25:21 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:20:46 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+
+int32_t ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a)
+{
+    return (r << 24 | g << 16 | b << 8 | a);
+}	
+
 
 uint32_t convert_colour(char* colour_str)
 {

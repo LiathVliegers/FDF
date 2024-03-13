@@ -5,6 +5,10 @@
 // window size:
 #define WIDTH 3000
 #define HEIGHT 2000
+#define OFFSET 200
+#define IMG_WIDTH WIDTH - (OFFSET * 2)
+#define IMG_HEIGHT HEIGHT - (OFFSET * 2)
+
 
 # include <MLX42/MLX42.h>
 # include <math.h>
@@ -14,6 +18,8 @@
 
 typedef struct s_point
 {
+	int			x;
+	int 		y;
 	int			z;
 	uint32_t	colour;
 } t_point;
@@ -43,12 +49,14 @@ void	validate_map_name(char *path, t_map_data* map);
 void	ft_exit(int error_code);
 uint32_t get_colour(char* line);
 void bresenham_line(float x, float y, float x1, float y1, t_map_data *map);
+void	fill_points_x_and_y(t_map_data *map);
 
 // TAKE THESE OUT:
+int32_t ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a);
 void	print_map(t_map_data* map);
 void	rose_curve(t_map_data *map);
-void make_grid(t_map_data* map);
-
+void 	make_grid(t_map_data* map);
+void	fill_image(t_map_data *map);
 
 
 #endif

@@ -6,12 +6,11 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:47:42 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:34 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:36:19 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
 
 
 void parse_map_file(char* file_path, t_map_data* map)
@@ -37,7 +36,29 @@ void parse_map_file(char* file_path, t_map_data* map)
 		i++;
 		line = get_next_line(fd);
 	}
+	fill_points_x_and_y(map);
 	free(line);
 	close(fd);
 }
 
+
+void	fill_points_x_and_y(t_map_data *map)
+{
+	int x;
+	int y;
+	
+	x = 0;
+	y = 0;
+
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			map->points[y][x].x = x;
+			map->points[y][x].y = y;
+			x++;
+		}
+		y++;
+	}
+}
