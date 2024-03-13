@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:47:42 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 21:52:21 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:02:34 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,3 @@ void parse_map_file(char* file_path, t_map_data* map)
 	close(fd);
 }
 
-void	ft_free_matrix(char **matrix)
-{
-	int i;
-
-	i = 0;
-	while (matrix[i] != NULL)
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free(matrix);
-}

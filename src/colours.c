@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:46:50 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 20:45:21 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:25:21 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 uint32_t convert_colour(char* colour_str)
 {
-	// ft_printf("%s\n", colour_str);
 	(void)colour_str;
-	return(255255255);
+	// return(255255255);
+	return(0xFFFFFFFF);
 }
 
 

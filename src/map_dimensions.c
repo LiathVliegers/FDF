@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:35:08 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 21:26:03 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 10:43:33 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int get_map_height(char* file_path)
 	return (height);
 }
 
-/* int get_width_per_line(char *line)
+int get_width_per_line(char *line)
 {
     char	**split_line;
     int		i;
@@ -57,23 +57,28 @@ int get_map_height(char* file_path)
     }
     free(split_line);
     return (width);
-} */
-
-int get_width_per_line(char *line)
-{
-    int		i;
-    int		width;
-
-	i = 0;
-	width = 1;
-	while (line[i] != '\0' && line[i] != '\n')
-	{
-		if (line[i] == ' ')
-			width++;
-		i++;
-	}
-    return (width);
 }
+
+// this version does't work because some maps have more than on space between numbers (42.fdf)
+
+// int get_width_per_line(char *line)
+// {
+//     int		i;
+//     int		width;
+// 	char	*str;
+
+// 	i = 0;
+// 	width = 0;
+// 	str = ft_strtrim(line, " ");
+// 	while (str[i] != '\0' && str[i] != '\n')
+// 	{
+// 		if (str[i] == ' ')
+// 			width++;
+// 		i++;
+// 	}
+// 	free(str);
+//     return (width);
+// }
 
 int validate_width(int fd)
 {
@@ -85,9 +90,11 @@ int validate_width(int fd)
     if (line == NULL)
 		ft_exit(5);		// 5: ERROR: Empty map
     old_width = get_width_per_line(line);
+	// ft_printf("old: %d\n", old_width);
     while (line != NULL)
     {
         new_width = get_width_per_line(line);
+		// ft_printf("new :%d\n", new_width);
         if (new_width != old_width)
             ft_exit(6);	// 6: ERROR: Lines in file are not consistent
         free(line);

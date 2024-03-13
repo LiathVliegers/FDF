@@ -2,22 +2,25 @@
 
 NAME				= fdf
 CC 					= cc
-CFLAGS 				= -Wall -Werror -Wextra -O3 -g #-fsanitize=address
+CFLAGS 				= -Wall -Werror -Wextra -O3 -g -fsanitize=address
 MLX_HEADERS			= -I lib/MLX42/include
 MY_HEADERS			= -I inc
 
 LIB_LIATH	= lib/lib_liath/lib_liath.a
 # 		MLX42:
-LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm #-fsanitize=address -g
+LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm -fsanitize=address -g
 OBJDIR				= .obj
 SRC_DIR				= src
-SRC					= main.c \
-						parse_map.c \
-						map_dimensions.c \
-						create_map.c \
-						errors.c \
+SRC					= \
 						colours.c \
-						debugging.c
+						create_map.c \
+						debugging.c \
+						draw_lines.c \
+						errors.c \
+						free.c \
+						main.c \
+						map_dimensions.c \
+						parse_map.c
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)

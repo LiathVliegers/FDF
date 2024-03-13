@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:50:19 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 21:19:34 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:02:17 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,16 @@ void fill_map(t_point* points_row, char* line)
 	j = 0;
 	while (split_line[j] != NULL)
 	{
-		if (split_line[j][0] != '\n')
-		{
-			if (ft_strchr(split_line[j], ','))
-				points_row[i].colour = get_colour(split_line[j]);
-			else if (!(ft_strchr(split_line[j], ',')))
-				points_row[i].colour = 0xffffff; // white?
-			points_row[i].z = ft_atoi(split_line[j]);
-		}
-		// free(split_line[j]);
+		if (ft_strchr(split_line[j], ','))
+			points_row[i].colour = get_colour(split_line[j]);
+		else if (!(ft_strchr(split_line[j], ',')))
+			points_row[i].colour = 0xFFFFFFFF; // white?
+			// points_row[i].colour = 255; // white?
+		points_row[i].z = ft_atoi(split_line[j]);
 		i++;
 		j++;
 	}
 	ft_free_matrix(split_line);
 }
 
-void free_map(t_map_data* map)
-{
-	int i;
-	
-	i = 0;
-    while (i < map->height) 
-	{
-        free(map->points[i]);
-		i++;
-    }
-    free(map->points);
-	free(map->title);
-    free(map);
-}
+
