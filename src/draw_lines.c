@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:27:43 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/13 20:23:53 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:32:42 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,14 @@ void bresenham_line(float x, float y, float x1, float y1, t_map_data *map)
 
 // void	draw_terrain(t_map_data *map)
 // {
+// 	// size of the lines is the amout of points (the width of the array) / IMG_WIDTH
+// 	// 
+	
 // 	int x;
 // 	int y;
 	
 // 	x = 0;
+// 	y = 0;
 	
 // 	while (y < map->height)
 // 	{
@@ -55,6 +59,8 @@ void bresenham_line(float x, float y, float x1, float y1, t_map_data *map)
 // 		y++;
 // 	}
 // }
+
+
 void	fill_image(t_map_data *map)
 {
 	for (uint32_t x = 0; x < map->image->width; ++x)
@@ -92,13 +98,13 @@ void	rose_curve(t_map_data *map)
 
 void make_grid(t_map_data* map)
 {
-	int x;
-	int y;
-	int grid;
+	float x;
+	float y;
+	float grid;
 
 	x = 0;
 	y = 0;
-	grid = 100;
+	grid = 99.99;
 	while (y <= IMG_HEIGHT)
 	{
 		x = 0;
