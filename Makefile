@@ -18,6 +18,7 @@ SRC					= \
 						draw_lines.c \
 						errors.c \
 						free.c \
+						keys.c \
 						main.c \
 						map_dimensions.c \
 						parse_map.c

@@ -3,7 +3,7 @@
 # define FDF_H
 
 // window size:
-#define WIDTH 3000
+#define WIDTH 3500
 #define HEIGHT 2000
 #define OFFSET 200
 #define IMG_WIDTH (WIDTH - (OFFSET * 2))
@@ -15,11 +15,14 @@
 // # include <stdbool.h>
 // # include <errno.h>
 
+
+
 typedef struct s_point
 {
 	int			x;
 	int 		y;
 	int			z;
+	int			last_point;
 	uint32_t	colour;
 } t_point;
 
@@ -29,6 +32,9 @@ typedef struct s_map_data
 	int			width;
 	char		*title;
 	t_point		**points;
+	int 		scale;
+	int			x_offset;
+	int			y_offset;
 
 	mlx_t		*window;
 	mlx_image_t	*image;
@@ -47,11 +53,17 @@ void		parse_map_file(char* file_path, t_map_data* map);
 void		validate_map_name(char *path, t_map_data* map);
 void		ft_exit(int error_code);
 uint32_t	get_colour(char* line);
-void		bresenham_line(float x, float y, float x1, float y1, t_map_data *map);
+void bresenham_line(float x, float y, float x1, float y1, t_map_data *map, uint32_t colour);
 void		fill_points_x_and_y(t_map_data *map);
 int32_t		ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a);
+void		draw_FDF(t_map_data *map);
+
+// new functions im not sure if they work yet
+void	key_is_pressed(void *data);
+
 
 // TAKE THESE OUT:
+
 void	print_map(t_map_data* map);
 void	rose_curve(t_map_data *map);
 void 	make_grid(t_map_data* map);
