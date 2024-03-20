@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:27:43 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/15 17:15:53 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:22:36 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	draw_FDF(t_map_data *map)
 	int x;
 	int y;
 
+	// declare point a and point b instead of what i have now
+	
+
 	y = 0;
 	while (y < map->height)
 	{
@@ -49,11 +52,11 @@ void	draw_FDF(t_map_data *map)
 		while (x < map->width)
 		{	
 			if ((y + 1) < map->height)
-				bresenham_line(((map->points[y][x].x + map->x_offset) * map->scale), ((map->points[y][x].y + map->y_offset) * map->scale), \
-				((map->points[y][x].x  + map->x_offset) * map->scale), ((map->points[y][x].y + 1 + map->y_offset) * map->scale), map, map->points[y][x].colour);
+				bresenham_line(((map->points[y][x].x  * map->scale) + map->x_offset), ((map->points[y][x].y  * map->scale) + map->y_offset), \
+				((map->points[y][x].x  * map->scale) + map->x_offset), (((map->points[y][x].y + 1) * map->scale) + map->y_offset), map, map->points[y][x].colour);
 			if (map->points[y][x].last_point == 0)
-				bresenham_line(((map->points[y][x].x  + map->x_offset) * map->scale), ((map->points[y][x].y + map->y_offset) * map->scale), \
-				((map->points[y][x].x + 1 + map->x_offset) * map->scale), ((map->points[y][x].y + map->y_offset) * map->scale), map, map->points[y][x].colour);
+				bresenham_line(((map->points[y][x].x * map->scale) + map->x_offset), ((map->points[y][x].y  * map->scale) + map->y_offset), \
+				(((map->points[y][x].x + 1) * map->scale) + map->x_offset), ((map->points[y][x].y * map->scale) + map->y_offset), map, map->points[y][x].colour);
 			if (map->points[y][x].last_point == 1)
 				break ;
 			x++;

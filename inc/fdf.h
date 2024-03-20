@@ -57,10 +57,15 @@ void bresenham_line(float x, float y, float x1, float y1, t_map_data *map, uint3
 void		fill_points_x_and_y(t_map_data *map);
 int32_t		ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a);
 void		draw_FDF(t_map_data *map);
+int32_t ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a);
+int get_r(int rgba);
+int get_g(int rgba);
+int get_b(int rgba);
+int get_a(int rgba);
+
 
 // new functions im not sure if they work yet
 void	key_is_pressed(void *data);
-
 
 // TAKE THESE OUT:
 

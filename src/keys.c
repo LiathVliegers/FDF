@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/15 16:14:00 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:25:59 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	key_action(int key, t_map_data* map)
 {
+	int speed;
+
+	speed = 10;
 	if (key == MLX_KEY_ESCAPE)
 		mlx_close_window(map->window);
 	if (key == MLX_KEY_Z)
@@ -21,13 +24,13 @@ void	key_action(int key, t_map_data* map)
 	if (key == MLX_KEY_X)
 		map->scale -= 1;	
 	if (key == MLX_KEY_RIGHT)
-		map->x_offset += 1;
+		map->x_offset += speed;
 	if (key == MLX_KEY_LEFT)
-		map->x_offset -= 1;	
+		map->x_offset -= speed;	
 	if (key == MLX_KEY_UP)
-		map->y_offset -= 1;
+		map->y_offset -= speed;
 	if (key == MLX_KEY_DOWN)
-		map->y_offset += 1;
+		map->y_offset += speed;
 }
 
 

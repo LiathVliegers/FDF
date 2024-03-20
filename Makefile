@@ -21,7 +21,8 @@ SRC					= \
 						keys.c \
 						main.c \
 						map_dimensions.c \
-						parse_map.c
+						parse_map.c \
+						pixel_colours.c
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
