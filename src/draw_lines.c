@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:27:43 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/19 16:22:36 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:04:11 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void bresenham_line(float x, float y, float x1, float y1, t_map_data *map, uint3
 }
 
 
+
 void	draw_FDF(t_map_data *map)
 {
 	int x;
 	int y;
-
-	// declare point a and point b instead of what i have now
-	
+	t_point a;
+	t_point b;
 
 	y = 0;
 	while (y < map->height)
@@ -51,12 +51,14 @@ void	draw_FDF(t_map_data *map)
 		x = 0;
 		while (x < map->width)
 		{	
+			a.x = ((map->points[y][x].x * map->scale) + map->x_offset);
+			a.y = ((map->points[y][x].y * map->scale) + map->y_offset);
+			b.x = ((map->points[y][x].x * map->scale) + map->x_offset);
+			b.y = ((map->points[y][x].y * map->scale) + map->y_offset);
 			if ((y + 1) < map->height)
-				bresenham_line(((map->points[y][x].x  * map->scale) + map->x_offset), ((map->points[y][x].y  * map->scale) + map->y_offset), \
-				((map->points[y][x].x  * map->scale) + map->x_offset), (((map->points[y][x].y + 1) * map->scale) + map->y_offset), map, map->points[y][x].colour);
+				bresenham_line(a.x, a.y, b.x, b.y + map->scale, map, map->points[y][x].colour);
 			if (map->points[y][x].last_point == 0)
-				bresenham_line(((map->points[y][x].x * map->scale) + map->x_offset), ((map->points[y][x].y  * map->scale) + map->y_offset), \
-				(((map->points[y][x].x + 1) * map->scale) + map->x_offset), ((map->points[y][x].y * map->scale) + map->y_offset), map, map->points[y][x].colour);
+				bresenham_line(a.x, a.y, b.x + map->scale, b.y, map, map->points[y][x].colour);
 			if (map->points[y][x].last_point == 1)
 				break ;
 			x++;
@@ -65,3 +67,33 @@ void	draw_FDF(t_map_data *map)
 	}
 }
 
+
+// void	draw_FDF(t_map_data *map)
+// {
+// 	int x;
+// 	int y;
+// 	// declare point a and point b instead of what i have now
+
+// 	y = 0;
+// 	while (y < map->height)
+// 	{
+// 		x = 0;
+// 		while (x < map->width)
+// 		{	
+// 			ft_printf("a.x = %d\n", map->points[y][x].x);
+// 			ft_printf("a.y = %d\n", map->points[y][x].y);
+// 			ft_printf("b.x = %d\n", map->points[y][x].x);
+// 			ft_printf("b.y = %d\n", map->points[y][x].y);
+// 			if ((y + 1) < map->height)
+// 				bresenham_line(((map->points[y][x].x  * map->scale) + map->x_offset), ((map->points[y][x].y  * map->scale) + map->y_offset), \
+// 				((map->points[y][x].x  * map->scale) + map->x_offset), (((map->points[y][x].y + 1) * map->scale) + map->y_offset), map, map->points[y][x].colour);
+// 			if (map->points[y][x].last_point == 0)
+// 				bresenham_line(((map->points[y][x].x * map->scale) + map->x_offset), ((map->points[y][x].y  * map->scale) + map->y_offset), \
+// 				(((map->points[y][x].x + 1) * map->scale) + map->x_offset), ((map->points[y][x].y * map->scale) + map->y_offset), map, map->points[y][x].colour);
+// 			if (map->points[y][x].last_point == 1)
+// 				break ;
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }

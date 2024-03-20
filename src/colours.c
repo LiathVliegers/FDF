@@ -6,15 +6,11 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:46:50 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/19 13:02:55 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:16:07 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-
-
-
 
 int	atohex(char *hex)
 {
@@ -35,7 +31,6 @@ int	atohex(char *hex)
         i++;
     }
 	numb = (numb << 8) | 0xFF;
-	ft_printf("numb = %x\n", numb);
     return (numb);
 }
 
