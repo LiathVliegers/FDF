@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:35:08 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/13 10:43:33 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:46:27 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int get_map_height(char* file_path)
 		line = get_next_line(fd);
 	}
 	free(line);
-	ft_printf("height: %d\n", height);		// TAKE THIS OUT!!!!!!!!!!!!!!
 	close(fd);
 	return (height);
 }
@@ -113,7 +112,6 @@ int get_map_width(char* file_path)
 	if (fd < 0)
 		ft_exit(3);		// 3: ERROR: Invalid fd
     width = validate_width(fd);
-	ft_printf("width: %d\n", width);	// TAKE THIS OUT!!!!!!!!!!!!
 	close(fd);
     return (width);
 }

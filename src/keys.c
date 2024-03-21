@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/19 16:25:59 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:43:56 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,30 @@
 
 void	key_action(int key, t_map_data* map)
 {
-	int speed;
-
-	speed = 10;
 	if (key == MLX_KEY_ESCAPE)
 		mlx_close_window(map->window);
 	if (key == MLX_KEY_Z)
-		map->scale += 1;	
+		map->scale += 1.0;	
 	if (key == MLX_KEY_X)
-		map->scale -= 1;	
+		map->scale -= 1.0;	
 	if (key == MLX_KEY_RIGHT)
-		map->x_offset += speed;
+		map->x_offset += 10;
 	if (key == MLX_KEY_LEFT)
-		map->x_offset -= speed;	
+		map->x_offset -= 10;	
 	if (key == MLX_KEY_UP)
-		map->y_offset -= speed;
+		map->y_offset -= 10;
 	if (key == MLX_KEY_DOWN)
-		map->y_offset += speed;
+		map->y_offset += 10;
+
+		
+	if (key == MLX_KEY_W)
+		map->z_scale += 0.1;
+	if (key == MLX_KEY_S)
+		map->z_scale -= 0.1;
+	if (key == MLX_KEY_A)
+		map->angle += 0.1;
+	if (key == MLX_KEY_D)
+		map->angle -= 0.1;
 }
 
 
@@ -47,10 +54,10 @@ int what_key(t_map_data* map)
 	keys[4] = MLX_KEY_LEFT;
 	keys[5] = MLX_KEY_DOWN;
 	keys[6] = MLX_KEY_UP;
-	keys[7] = 0;
-	keys[8] = 0;
-	keys[9] = 0;
-	keys[10] = 0;
+	keys[7] = MLX_KEY_W;
+	keys[8] = MLX_KEY_S;
+	keys[9] = MLX_KEY_A;
+	keys[10] = MLX_KEY_D;
 	keys[11] = 0;
 	keys[12] = 0;
 	keys[13] = 0;

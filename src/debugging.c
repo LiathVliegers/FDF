@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:47:44 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/15 16:55:20 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:45:45 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,28 @@ void print_map(t_map_data* map)
 {
 	int x;
 	int y;
+
+	ft_printf("title: %s\n", map->title);
+	ft_printf("height: %d\n", map->height);
+	ft_printf("width: %d\n", map->width);
+
+	ft_printf("x_offset: %d\n", map->x_offset);
+	ft_printf("y_offset: %d\n", map->y_offset);
+	
+	ft_printf("scale: %d\n", (int)map->scale);
+	ft_printf("z_scale: %d\n", (int)map->z_scale);
+	ft_printf("angle: %d\n", (int)map->angle);
+
 	y = 0;
 	while (y < map->height)
 	{
 		x = 0;
 		while (x < map->width)
 		{
-			// ft_printf("x = %d ", map->points[y][x].x);
-			// ft_printf("y = %d ", map->points[y][x].y);
-			// ft_printf("z = %d\n", map->points[y][x].z);
-			ft_printf("%d ", map->points[y][x].z);
+			// ft_printf("%d ", (int)map->points[y][x].x);
+			// ft_printf("%d ", (int)map->points[y][x].y);
+			ft_printf("%d ", (int)map->points[y][x].z);
 			// ft_printf("%d ", map->points[y][x].last_point);
-
 			// ft_printf("%X ", map->points[y][x].colour);
 			x++;
 		}
@@ -72,28 +82,6 @@ void	rose_curve(t_map_data *map)
 }
 
 
-// void make_grid(t_map_data* map)
-// {
-// 	float x;
-// 	float y;
-// 	float grid;
-
-// 	x = 0;
-// 	y = 0;
-// 	grid = 99.99;
-// 	while (y <= HEIGHT)
-// 	{
-// 		x = 0;
-// 		while (x <= WIDTH)
-// 		{
-// 			bresenham_line(x, 0, x, HEIGHT, map);
-// 			x += grid;
-// 		}
-// 		bresenham_line(0, y, WIDTH, y, map);
-// 		y += grid;
-// 	}
-// }
-
 
 // ----------------------------------------------------
 
@@ -106,3 +94,5 @@ void	rose_curve(t_map_data *map)
 // 	mlx_string_put(map.mlx_ptr, map.win_ptr, 10, 5, 0x03fc35, menu);
 	
 // }
+
+

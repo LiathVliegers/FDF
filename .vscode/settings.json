@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"ranges": "c",
-		"numbers": "c"
+		"numbers": "c",
+		"random": "c"
 	}
 }

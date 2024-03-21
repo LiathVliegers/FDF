@@ -5,9 +5,10 @@
 // window size:
 #define WIDTH 3500
 #define HEIGHT 2000
-#define OFFSET 200
-#define IMG_WIDTH (WIDTH - (OFFSET * 2))
-#define IMG_HEIGHT (HEIGHT - (OFFSET * 2))
+
+
+
+
 
 # include <MLX42/MLX42.h>
 # include <math.h>
@@ -19,9 +20,9 @@
 
 typedef struct s_point
 {
-	int			x;
-	int 		y;
-	int			z;
+	float		x;
+	float 		y;
+	float		z;
 	int			last_point;
 	uint32_t	colour;
 } t_point;
@@ -32,7 +33,9 @@ typedef struct s_map_data
 	int			width;
 	char		*title;
 	t_point		**points;
-	int 		scale;
+	float 		scale;
+	float		z_scale;
+	float 		angle;
 	int			x_offset;
 	int			y_offset;
 
@@ -71,7 +74,6 @@ void	key_is_pressed(void *data);
 
 void	print_map(t_map_data* map);
 void	rose_curve(t_map_data *map);
-void 	make_grid(t_map_data* map);
 void	fill_image(t_map_data *map);
 
 

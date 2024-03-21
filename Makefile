@@ -13,7 +13,6 @@ OBJDIR				= .obj
 SRC_DIR				= src
 SRC					= \
 						colours.c \
-						create_map.c \
 						debugging.c \
 						draw_lines.c \
 						errors.c \
@@ -22,7 +21,8 @@ SRC					= \
 						main.c \
 						map_dimensions.c \
 						parse_map.c \
-						pixel_colours.c
+						pixel_colours.c \
+						validate_and_allocate.c
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
