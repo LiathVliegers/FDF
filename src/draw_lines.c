@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:27:43 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/21 16:46:32 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:39:40 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 #define MOD(a)(a < 0 ? -a : a)
 
 
+
 // -------------------WORKING 3D VERSION:----------------------------------
+
 
 void bresenham_line(float a_x, float a_y, float b_x, float b_y, t_map_data *map, uint32_t colour) {
     float x_step;
@@ -37,6 +39,14 @@ void bresenham_line(float a_x, float a_y, float b_x, float b_y, t_map_data *map,
     }
 }
 
+// functie die de x punten returned (horizontale lijn) 
+// functie die de y punten berekend, verticale lijn (fml)
+// then you have a map
+// dan kijken naar de octave van de bresenham line algorithm joepie
+// thank you jisse
+// No worries <3
+
+
 void draw_FDF(t_map_data *map) {
     int x;
     int y;
@@ -47,19 +57,18 @@ void draw_FDF(t_map_data *map) {
     y = 0;
     while (y < map->height) {
         x = 0;
-        while (x < map->width) {
+        while (x < map->width - 1) {
         // Assigning the values
             a.x = map->points[y][x].x;
             a.y = map->points[y][x].y;
+			
             b.x = map->points[y][x].x;
             b.y = map->points[y][x].y;
         // Height of z value
             a.z = map->points[y][x].z * map->z_scale;
             b.z = map->points[y][x].z * map->z_scale;
 
-
-
-// if this is commented out, wtf is happening???????? xD
+		// if this is commented out, wtf is happening???????? xD
 			float temp_a_x;
 			float temp_b_x;
 			
@@ -72,14 +81,14 @@ void draw_FDF(t_map_data *map) {
             b.y = ((temp_b_x + b.y) * 0.5 - b.z) * map->scale;
 
 
-			// isometric shit, does't really work
-			// a.x = (a.x - a.y) * cos(map->angle);
-			// a.y = (a.x + a.y) * sin(map->angle) - a.z;
-			// b.x = (b.x - b.y) * cos(map->angle);
-			// b.y = (b.x + b.y) * sin(map->angle) - b.z;
+		// isometric shit, does't really work
+			a.x = (a.x - a.y) * cos(map->angle);
+			a.y = (a.x + a.y) * sin(map->angle) - a.z;
+			b.x = (b.x - b.y) * cos(map->angle);
+			b.y = (b.x + b.y) * sin(map->angle) - b.z;
 			
 			
-            // Add the offset 
+        // Add the offset 
             a.x += map->x_offset;
             a.y += map->y_offset;
             b.x += map->x_offset;
@@ -99,9 +108,7 @@ void draw_FDF(t_map_data *map) {
 
 
 
-
 // -------------------WORKING (FLAT) VERSION:----------------------------------
-
 
 
 

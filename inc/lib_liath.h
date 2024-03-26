@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:21:00 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/07 16:03:02 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:43:20 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #define DEFAULT "\033[0m"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 100000
 # endif
 
 // libft:

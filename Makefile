@@ -10,7 +10,9 @@ LIB_LIATH	= lib/lib_liath/lib_liath.a
 # 		MLX42:
 LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm -fsanitize=address -g
 OBJDIR				= .obj
+
 SRC_DIR				= src
+
 SRC					= \
 						colours.c \
 						debugging.c \
@@ -23,6 +25,7 @@ SRC					= \
 						parse_map.c \
 						pixel_colours.c \
 						validate_and_allocate.c
+
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
