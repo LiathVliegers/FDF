@@ -2,13 +2,13 @@
 
 NAME				= fdf
 CC 					= cc
-CFLAGS 				= -Wall -Werror -Wextra -O3 -g -fsanitize=address
+CFLAGS 				= -Wall -Werror -Wextra -Ofast #-g -fsanitize=address
 MLX_HEADERS			= -I lib/MLX42/include
 MY_HEADERS			= -I inc
 
 LIB_LIATH	= lib/lib_liath/lib_liath.a
 # 		MLX42:
-LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm -fsanitize=address -g
+LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm #-fsanitize=address -g
 OBJDIR				= .obj
 
 SRC_DIR				= src

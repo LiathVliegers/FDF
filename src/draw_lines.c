@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:27:43 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/25 16:39:40 by livliege         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:04:32 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,24 @@ void draw_FDF(t_map_data *map) {
             a.z = map->points[y][x].z * map->z_scale;
             b.z = map->points[y][x].z * map->z_scale;
 
-		// if this is commented out, wtf is happening???????? xD
-			float temp_a_x;
-			float temp_b_x;
+		// // if this is commented out, wtf is happening???????? xD
+		// 	float temp_a_x;
+		// 	float temp_b_x;
 			
-			temp_a_x = a.x;
-            a.x = ((temp_a_x - a.y) * 1.0) * map->scale;
-            a.y = ((temp_a_x + a.y) * 0.5 - a.z) * map->scale;
+		// 	temp_a_x = a.x;
+        //     a.x = ((temp_a_x - a.y) * 1.0) * map->scale;
+        //     a.y = ((temp_a_x + a.y) * 0.5 - a.z) * map->scale;
 
-        	temp_b_x = b.x;
-            b.x = ((temp_b_x - b.y) * 1.0) * map->scale;
-            b.y = ((temp_b_x + b.y) * 0.5 - b.z) * map->scale;
+        // 	temp_b_x = b.x;
+        //     b.x = ((temp_b_x - b.y) * 1.0) * map->scale;
+        //     b.y = ((temp_b_x + b.y) * 0.5 - b.z) * map->scale;
 
 
 		// isometric shit, does't really work
-			a.x = (a.x - a.y) * cos(map->angle);
-			a.y = (a.x + a.y) * sin(map->angle) - a.z;
-			b.x = (b.x - b.y) * cos(map->angle);
-			b.y = (b.x + b.y) * sin(map->angle) - b.z;
+			// a.x = (a.x - a.y) * cos(map->angle);
+			// a.y = (a.x + a.y) * sin(map->angle) - a.z;
+			// b.x = (b.x - b.y) * cos(map->angle);
+			// b.y = (b.x + b.y) * sin(map->angle) - b.z;
 			
 			
         // Add the offset 
