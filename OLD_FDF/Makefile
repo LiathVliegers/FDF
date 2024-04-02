@@ -2,25 +2,34 @@
 
 NAME				= fdf
 CC 					= cc
-CFLAGS 				= -Wall -Werror -Wextra -O3 -g -fsanitize=address
+CFLAGS 				= -Wall -Werror -Wextra -Ofast #-g -fsanitize=address
 MLX_HEADERS			= -I lib/MLX42/include
 MY_HEADERS			= -I inc
 
-LIB_LIATH			= lib/lib_liath/lib_liath.a
-LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm -fsanitize=address -g
+LIB_LIATH	= lib/lib_liath/lib_liath.a
+# 		MLX42:
+LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm #-fsanitize=address -g
 OBJDIR				= .obj
+
 SRC_DIR				= src
-SRC						= \
-							colours.c \
-							debugging.c \
-							draw.c \
-							errors_and_clear.c \
-							keys.c \
-							main.c \
-							parse_map.c
+
+SRC					= \
+						colours.c \
+						debugging.c \
+						draw_lines.c \
+						errors.c \
+						free.c \
+						keys.c \
+						main.c \
+						map_dimensions.c \
+						parse_map.c \
+						pixel_colours.c \
+						validate_and_allocate.c
+
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
+# cmake -I ./MLX42/include -B ./MLX42/build && make - C ./MLX42/build -j4 $(NAME)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)

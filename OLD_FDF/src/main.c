@@ -5,12 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 13:22:50 by livliege         ###   ########.fr       */
+/*   Created: 2024/03/01 17:46:53 by livliege          #+#    #+#             */
+/*   Updated: 2024/03/25 13:14:10 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+
+
+
 
 void	create_window(t_map_data* map)
 {
@@ -18,6 +22,9 @@ void	create_window(t_map_data* map)
 	map->image = mlx_new_image(map->window, WIDTH, HEIGHT);
 	mlx_image_to_window(map->window, map->image, 0, 0);
 	
+	// fill_image(map);
+	// make_grid(map);
+	// rose_curve(map);
 	draw_FDF(map);
 	
 	mlx_loop_hook(map->window, key_is_pressed, map);
@@ -32,20 +39,18 @@ int	main (int argc, char** argv)
 	if (argc != 2)
 		ft_exit(1);	// 1: ERROR: Incorrect number of arguments
 
-	map = (t_map_data*)ft_calloc(sizeof(t_map_data), 1);
+	map = (t_map_data*)malloc(sizeof(t_map_data));
 	if (map == NULL)
 		ft_exit(2);	// 2: ERROR: Memory allocation failed
 
-	read_map(map, argv[1]);
+	parse_map_file(argv[1], map);
 	
 	print_map(map);
 	
 	create_window(map);
 	
-	clear_everything(map);
+	free_map(map);
 }
-
-
 
 
 

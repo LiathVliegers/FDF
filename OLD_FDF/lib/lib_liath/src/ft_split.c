@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:29:13 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/25 17:41:39 by livliege         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:07:17 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*ft_free(char **split_2d_array)
 	return (NULL);
 }
 
-int	ft_wordcount(char const *s, char c)
+size_t	ft_wordcount(char const *s, char c)
 {
 	int	words;
 	int	new_word;

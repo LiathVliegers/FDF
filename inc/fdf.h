@@ -6,17 +6,11 @@
 #define WIDTH 3500
 #define HEIGHT 2000
 
-
-
-
-
 # include <MLX42/MLX42.h>
 # include <math.h>
 # include "lib_liath.h"
 // # include <stdbool.h>
 // # include <errno.h>
-
-
 
 typedef struct s_point
 {
@@ -29,52 +23,36 @@ typedef struct s_point
 
 typedef struct s_map_data
 {
+	mlx_t		*window;
+	mlx_image_t	*image;
+
 	int			height;
 	int			width;
 	char		*title;
+	char		*full_map_buffer;
+	char		**map_lines;
 	t_point		**points;
+
 	float 		scale;
 	float		z_scale;
 	float 		angle;
 	int			x_offset;
 	int			y_offset;
-
-	mlx_t		*window;
-	mlx_image_t	*image;
 } t_map_data;
 
 // alleen de functie die in een andere file staat moet hier komen, 
 // de rest moeten static functions zijn, want die kunnen niet aangeroepen worden vanuit een andere file
 // = kleinere kans op naam-clashing :D
-void		free_map(t_map_data* map);
-void		allocate_memory_map(t_map_data* map);
-int			get_map_height(char* file_path);
-int			get_map_width(char* file_path);
-void		fill_map(t_point* points_row, char* line);
-void		ft_free_matrix(char **matrix);
-void		parse_map_file(char* file_path, t_map_data* map);
-void		validate_map_name(char *path, t_map_data* map);
-void		ft_exit(int error_code);
-uint32_t	get_colour(char* line);
-void bresenham_line(float x, float y, float x1, float y1, t_map_data *map, uint32_t colour);
-void		fill_points_x_and_y(t_map_data *map);
-int32_t		ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a);
-void		draw_FDF(t_map_data *map);
-int32_t ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a);
-int get_r(int rgba);
-int get_g(int rgba);
-int get_b(int rgba);
-int get_a(int rgba);
 
-
-// new functions im not sure if they work yet
+void read_map(t_map_data *map, char* file_path);
+void	ft_exit(int error_code);
+void clear_everything(t_map_data *map);
+void	ft_free_matrix(char **lines);
+uint32_t get_colour(char* colour);
 void	key_is_pressed(void *data);
+void draw_FDF(t_map_data *map);
 
-// TAKE THESE OUT:
-
-void	print_map(t_map_data* map);
-void	rose_curve(t_map_data *map);
-void	fill_image(t_map_data *map);
-
+// debugging:
+void print_map(t_map_data* map);
 
 #endif
