@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:48:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 13:19:29 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:46:24 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void print_map(t_map_data* map)
 			// ft_printf("y = %d ", (int)map->points[y][x].y);
 			// ft_printf("x = %d ", (int)map->points[y][x].x);
 			
-			// ft_printf("%d ", (int)map->points[y][x].z);
-			ft_printf("%d ", map->points[y][x].last_point);
+			ft_printf("%d ", (int)map->points[y][x].z);
+			// ft_printf("%d ", map->points[y][x].last_point);
 			// ft_printf("colour = %X ", map->points[y][x].colour);
 			// ft_printf("\n");
 			x++;

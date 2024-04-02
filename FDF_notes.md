@@ -13,12 +13,7 @@ https://github.com/ailopez-o/42Barcelona-FdF/blob/main/README.md
 
 TODO's:
 
-- PARSE COLOURS
-- CLOSE ALL FD'S IN A BETTER WAY 				// in function parse_file
-- save get_next_lie outcomes in linked list, so we dont have to read the file 3 times
-- make datastruct with pointers to other structs so we can make a clean up function that cleans and frees everything
-- make my own put_pixel function that protects against sagfaults if the pixel is outside of the image bounds
-- 
+
 - 
 - in main function: its better an less buggy to check if esc key is down in mlx_loop_hook, instead of in ft_hook (this is usefull if you want to check if for example the ctrl key is being hld down) -> ask Maarten
 
@@ -43,72 +38,6 @@ void	*ft_malloc(t_data *data, size_t size)
 }
 
 
-map:
-
-0 0 1 2 3 4 5 6 7 8 9
-0 0 0 1 2 3 4 5 6 7 8 9
-0 0 0 0 1 2 3 4 5 6 7 8
-0 0 0 0 0 1 2 3 4 5 6 9
-0 0 0 0 0 0 1 2 3 4 5
-0 0 0 0 0 0 0 1 2 3 4
-0 0 0 0 0 0 0 0 1 2 3
-0 0 0 0 0 0 0 0 0 1 2
-0 0 0 0 0 0 0 0 0 0 1
-
-width = 11
-max width = 12
-index = -1
-
-pointer to z_value :
-index:	| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11|
-value:	|   |   |   |   |   |   |   |   |   |   |   |   |
-
-line:
-index:	| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11|
-value:	| 0 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | ? |
-
-split_line:
-index	value
-0		0
-1		0
-2		1
-3		2
-4		3
-5		4
-6		5
-7		6
-8		7
-9		8
-10		9
-11		NULL
-
-
-
-
-split_line:
-index	value
-0		0
-1		0
-2		1,0x810202
-3		2
-4		3
-5		4
-6		5
-7		6
-8		7
-9		8
-10		9
-11		NULL
-
-
-
-split_line:
-index	value
-0		1
-1		0x810202
-2		NULL
-
-
 
 
 r = 81
@@ -120,7 +49,6 @@ a = FF
 r << 24 | g << 16 | b << 8 | a;
 
 
-
 structs dereferencing   (:S)
 (*map).height			= map->height
 (*(points_row + i)).z	= points_row[i].z
@@ -128,5 +56,287 @@ structs dereferencing   (:S)
 
 
 
+Bresenham's Line Drawing Algorithm - Lines in all octants
+
+m = slope
+
+1. X1 < X2		&&		0 <= m <= 1
+2. Y1 < Y2		&&		1 < m < infinity
+3. Y1 < Y2		&&		-1 > m > -infinity
+4. X2 < X1		&&		0 >= m >= -1
+5. X2 < X1		&&		0 < m <= 1
+6. Y2 < Y1		&&		1 < m < infinity
+7. Y2 < Y1		&&		-1 > m > -infinity
+8. X1 < X2		&&		0 >= m >= -1
+
+Octant 1: 		Do Nothing
+
+Octant 2: 		swap X1, Y1
+				swap X2, Y2
+				put_pixel(Y,X)
+
+Octant 3: 		swap X1, Y1
+				swap X2, Y2
+				Y *= -1
+				put_pixel(Y,X)
+
+Octant 4: 		X *= -1
+				put_pixel(X,Y)
+
+Octant 5: 		Y *= -1
+				X *= -1
+				put_pixel(X,Y)
+
+Octant 6: 		swap X1, Y1
+				swap X2, Y2
+				Y *= -1
+				X *=* -1
+				put_pixel(Y,X)
+
+Octant 7: 		swap X1, Y1
+				swap X2, Y2
+				X *= -1
+				put_pixel(Y,X)
+
+Octant 8: 		Y *= -1
+				put_pixel(X,Y)
+
+
+
+EXAMPLE:
+
+point 1 = [32, 3]
+point 2 = [48, 8]
+slope = (8-3) / (48-32) = 0,3125
+X1 < X2 (32 < 48) and (0 <= m <= 1)
+so the line is in the FIRST octant.
+
+|	t	|	P	|	X	|	Y	|
+|-------|-------|-------|-------|
+|	0	|  -6   |	32	|	3	|	0
+|	1	|   4   |	33	|	3	|
+|	2	|  -18  |	34	|	4	|	1
+|	3	|  -8   |	35	|	4	|
+|	4	|   2   |	36	|	4	|
+|	5	|  -20  |	37	|	5	|	2
+|	6	|  -10  |	38	|	5	|
+|	7	|   0   |	39	|	5	|
+|	8	|  -22  |	40	|	6	|	3
+|	9	|  -12  |	41	|	6	|
+|	10	|  -2   |	42	|	6	|
+|	11	|   8   |	43	|	6	|
+|	12	|  -14  |	44	|	7	|	4
+|	13	|  -4   |	45	|	7	|
+|	14	|   6   |	46	|	7	|
+|	15	|  -16  |	47	|	8	|	5
+|	16	|  -6   |	48	|	8	|
+
+dx			= 16
+dy			= 5
+2dy			= 10
+2dy - 2dx 	= -22
+P0 			= 2dy - dx
+P0 			= -6
+
+
+-------------
+FIRST OCTANT:
+point 1 = [32, 3]
+point 2 = [48, 8]
+slope = (8-3) / (48-32) = 0,3125
+X1 < X2
+Y1 < Y2
+X1 < X2		&&		0 <= m <= 1
+
+Octant 1: 		Do Nothing
+
+-------------
+SECOND OCTANT:
+point 1 = [3, 32]
+point 2 = [8, 48]
+slope = (48-32) / (8-3) = 3,2
+X1 < X2
+Y1 < Y2
+Y1 < Y2		&&		1 < m < infinity
+
+Octant 2: 		swap X1, Y1
+				swap X2, Y2
+				put_pixel(Y,X)
+SWAP
+point 1 = [32, 3]
+point 2 = [48, 8]
+
+dx			= 16
+dy			= 5
+2dy			= 10
+P0 			= 2dy - dx
+P0 			= -6
+
+-------------
+THIRD OCTANT:
+point 1 = [8, 32]
+point 2 = [3, 48]
+slope = (48-32) / (3-8) = −3,2
+X2 < X1
+Y1 < Y2
+Y1 < Y2		&&		-1 > m > -infinity
+
+Octant 3: 		swap X1, Y1
+				swap X2, Y2
+				Y *= -1
+				put_pixel(Y,X)
+SWAP
+point 1 = [32, 8]
+point 2 = [48, 3]
+
+dx			= 16
+dy			= -5	* -1 = 5
+2dy			= 10
+P0 			= 2dy - dx
+P0 			= -6
+
+-------------
+FOURTH OCTANT:
+point 1 = [48, 3]
+point 2 = [32, 8]
+slope = (8-3) / (32-48) = −0,3125
+X2 < X1
+Y1 < Y2
+X2 < X1		&&		0 >= m >= -1
+
+Octant 4: 		X *= -1
+				put_pixel(X,Y)
+
+dx			= -16	* -1 = 16
+dy			= 5
+2dy			= 10
+P0 			= 2dy - dx
+P0 			= -6
+
+-------------
+FIFTH OCTANT:
+point 1 = [48, 8]
+point 2 = [32, 3]
+slope = (3-8) / (32-48) = 0,3125
+X2 < X1
+Y2 < Y1
+
+X2 < X1		&&		0 < m <= 1
+
+Octant 5: 		Y *= -1
+				X *= -1
+				put_pixel(X,Y)
+
+dx			= -16	* -1 = 16
+dy			= -5	* -1 = 5
+2dy			= 10
+P0 			= 2dy - dx
+P0 			= -6
+
+-------------
+SIXTH OCTANT:
+point 1 = [8, 48]
+point 2 = [3, 32]
+slope = (32-48) / (3-8) = 3,2
+X2 < X1
+Y2 < Y1
+
+Y2 < Y1		&&		1 < m < infinity
+
+Octant 6: 		swap X1, Y1
+				swap X2, Y2
+				Y *= -1
+				X *=* -1
+				put_pixel(Y,X)
+
+SWAP
+point 1 = [48, 8]
+point 2 = [32, 3]
+
+dx			= -16	* -1 = 16
+dy			= -5	* -1 = 5
+2dy			= 10
+P0 			= 2dy - dx
+P0 			= -6
+
+---------------
+SEVENTH OCTANT:
+point 1 = [3, 48]
+point 2 = [8, 32]
+slope = (32-48) / (8-3) = −3,2
+X1 < X2
+Y2 < Y1
+
+Y2 < Y1		&&		-1 > m > -infinity
+
+Octant 7: 		swap X1, Y1
+				swap X2, Y2
+				X *= -1
+				put_pixel(Y,X)
+
+SWAP
+point 1 = [48, 3]
+point 2 = [32, 8]
+
+dx			= -16 			* -1 = 16
+dy			= 5
+2dy			= 10
+P0 			= 2dy - dx
+P0 			= 10 -16 = 		-6
+
+-------------
+EIGTH OCTANT:
+point 1 = [32, 8]
+point 2 = [48, 3]
+slope = (3-8) / (48-32) = −0,3125
+X1 < X2
+Y2 < Y1
+
+X1 < X2		&&		0 >= m >= -1
+
+Octant 8: 		Y *= -1
+				put_pixel(X,Y)
+
+dx			= 16
+dy			= -5 			* -1 = 5
+2dy			= 10
+P0 			= 2dy - dx
+P0 			= -6
+
+
+
+
+
+
+
+
+
+
+
+|	t	|	P	|	X	|	Y	|
+|-------|-------|-------|-------|
+|	0	|       |	32	|		|
+|	1	|       |	33	|		|
+|	2	|       |	34	|		|
+|	3	|       |	35	|		|
+|	4	|       |	36	|		|
+|	5	|       |	37	|		|
+|	6	|       |	38	|		|
+|	7	|       |	39	|		|
+|	8	|       |	40	|		|
+|	9	|       |	41	|		|
+|	10	|       |	42	|		|
+|	11	|       |	43	|		|
+|	12	|       |	44	|		|
+|	13	|       |	45	|		|
+|	14	|       |	46	|		|
+|	15	|       |	47	|		|
+|	16	|       |	48	|		|
+
+dx			= how many steps between the tho values of x
+dy			= how many steps between the tho values of y
+2dy			= 
+P0 			= 2dy - dx
+P0 			= ??????????????????????????????
 
 

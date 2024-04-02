@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 14:58:44 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:45:24 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ void	parse_map_points(t_map_data* map)
 		split_line = ft_split(map->map_lines[i], ' ');
 		while(split_line[width] != NULL)
 			width++;
-		if (width > map->width)
+		if (map->width == 0)
 			map->width = width;
+		if (width > map->width)
+			ft_exit(6);
 		map->points[i] = (t_point*)malloc(sizeof (t_point) * width);
 		if (map->points == NULL)
 			ft_exit(2);
