@@ -56,6 +56,8 @@ structs dereferencing   (:S)
 
 
 
+
+
 Bresenham's Line Drawing Algorithm - Lines in all octants
 
 m = slope
@@ -340,3 +342,47 @@ P0 			= 2dy - dx
 P0 			= ??????????????????????????????
 
 
+
+
+
+
+1. aX < bX		&&		0 <= m <= 1
+2. aY < bY		&&		1 < m < infinity
+3. aY < bY		&&		-1 > m > -infinity
+4. bX < aX		&&		0 >= m >= -1
+5. bX < aX		&&		0 < m <= 1
+6. bY < aY		&&		1 < m < infinity
+7. bY < aY		&&		-1 > m > -infinity
+8. aX < bX		&&		0 >= m >= -1
+
+Octant 1: 		Do Nothing
+
+Octant 2: 		swap aX, aY
+				swap bX, bY
+				put_pixel(Y,X)
+
+Octant 3: 		swap aX, aY
+				swap bX, bY
+				Y *= -1
+				put_pixel(Y,X)
+
+Octant 4: 		X *= -1
+				put_pixel(X,Y)
+
+Octant 5: 		Y *= -1
+				X *= -1
+				put_pixel(X,Y)
+
+Octant 6: 		swap aX, aY
+				swap bX, bY
+				Y *= -1
+				X *=* -1
+				put_pixel(Y,X)
+
+Octant 7: 		swap aX, aY
+				swap bX, bY
+				X *= -1
+				put_pixel(Y,X)
+
+Octant 8: 		Y *= -1
+				put_pixel(X,Y)

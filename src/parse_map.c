@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 15:45:24 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:47:42 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,10 @@ void set_defaults(char *file_path, t_map_data* map)
 	parse_map_points(map);		// here we get x, y, z and colour values
 	map->x_offset = WIDTH / 3;
 	map->y_offset = HEIGHT / 3;
-	map->scale = 50.0;
+	map->scale = (map->width + map->height) / 2 ;
 	map->z_scale = 1.0;
 	map->angle = 1.0;
+	map->is_isometric = 1;
 }
 
 void read_map(t_map_data *map, char* file_path)

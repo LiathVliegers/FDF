@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/25 16:46:15 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:21:28 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ void	key_action(int key, t_map_data* map)
 	if (key == MLX_KEY_S)
 		map->z_scale -= 0.1;
 	if (key == MLX_KEY_A)
-		map->angle += 0.1;
+		map->angle += 0.01;
 	if (key == MLX_KEY_D)
-		map->angle -= 0.1;
+		map->angle -= 0.01;
+	if (key == MLX_KEY_I)
+		map->is_isometric *= -1;
 }
 
 
@@ -56,7 +58,7 @@ int what_key(t_map_data* map)
 	keys[8] = MLX_KEY_S;
 	keys[9] = MLX_KEY_A;
 	keys[10] = MLX_KEY_D;
-	keys[11] = 0;
+	keys[11] = MLX_KEY_I;
 	keys[12] = 0;
 	keys[13] = 0;
 	while (keys[i] != 0)

@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:48:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 15:46:24 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:00:46 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,43 @@ void print_map(t_map_data* map)
 		x = 0;
 		while (x < map->width)
 		{
-			// ft_printf("y = %d ", (int)map->points[y][x].y);
-			// ft_printf("x = %d ", (int)map->points[y][x].x);
+			ft_printf("y = %d ", (int)map->points[y][x].y);
+			ft_printf("x = %d ", (int)map->points[y][x].x);
 			
-			ft_printf("%d ", (int)map->points[y][x].z);
+			// ft_printf("%d ", (int)map->points[y][x].z);
 			// ft_printf("%d ", map->points[y][x].last_point);
 			// ft_printf("colour = %X ", map->points[y][x].colour);
-			// ft_printf("\n");
+			ft_printf("\n");
 			x++;
 		}
-		ft_printf("\n"); // use this for the z values
+		// ft_printf("\n"); // use this for the z values
 		y++;
 	}
 }
+
+
+void	rose_curve(t_map_data *map)
+{
+	int colour = 0xFFFF00FF;
+	float n = 5;
+	float d = 6;
+	float k = n / d;
+	float angle = 0;
+	float radius;
+	int x;
+	int y;
+	
+	while (angle < 3610)
+	{
+		radius = 500 * cos(k * angle);
+		x = radius * cos(angle);
+		y = radius * sin(angle);
+		mlx_put_pixel(map->image, x + (WIDTH / 2), y + (HEIGHT / 2), colour);
+		angle += 0.001;
+		// colour += 2550;
+	}	
+}
+
+
 
 

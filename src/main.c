@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 13:22:50 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:56:47 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	create_window(t_map_data* map)
 	map->image = mlx_new_image(map->window, WIDTH, HEIGHT);
 	mlx_image_to_window(map->window, map->image, 0, 0);
 	
-	draw_FDF(map);
+	// draw_FDF(map);
+	// rose_curve(map);
 	
 	mlx_loop_hook(map->window, key_is_pressed, map);
 	mlx_loop(map->window);
@@ -38,7 +39,7 @@ int	main (int argc, char** argv)
 
 	read_map(map, argv[1]);
 	
-	print_map(map);
+	// print_map(map);
 	
 	create_window(map);
 	

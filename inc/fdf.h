@@ -38,6 +38,7 @@ typedef struct s_map_data
 	float 		angle;
 	int			x_offset;
 	int			y_offset;
+	int			is_isometric;
 } t_map_data;
 
 // alleen de functie die in een andere file staat moet hier komen, 
@@ -52,7 +53,9 @@ uint32_t get_colour(char* colour);
 void	key_is_pressed(void *data);
 void draw_FDF(t_map_data *map);
 
+void Bresline (int xstart, int ystart, int xend, int yend, t_map_data *map, uint32_t colour);
 // debugging:
 void print_map(t_map_data* map);
+void	rose_curve(t_map_data *map);
 
 #endif
