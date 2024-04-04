@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/03 15:47:42 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:58:07 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,11 +140,47 @@ void set_defaults(char *file_path, t_map_data* map)
 	parse_map_points(map);		// here we get x, y, z and colour values
 	map->x_offset = WIDTH / 3;
 	map->y_offset = HEIGHT / 3;
-	map->scale = (map->width + map->height) / 2 ;
+	map->scale = 50.0 ;
 	map->z_scale = 1.0;
 	map->angle = 1.0;
 	map->is_isometric = 1;
 }
+
+
+// // faster version, not finished yet
+
+// void read_map(t_map_data *map, char* file_path)
+// {
+// 	int fd;
+// 	int i;
+// 	char *line;
+	
+// 	i = 0;
+// 	fd = open(file_path, O_RDONLY);
+// 	if (fd < 0)
+// 		ft_exit(3);
+// 	map->map_lines[i] = get_next_line(fd);
+// 	i++;
+// 	if (line == NULL)
+// 	{
+// 		ft_exit(5);
+// 		close(fd);
+// 	}
+// 	while (line != NULL)
+// 	{
+// 		map->map_lines[i] = get_next_line(fd);
+// 		i++;
+// 		map->height++;
+// 	}
+// 	close(fd);
+// 	set_defaults(file_path, map);
+// 	// how are we going to get the widht then he? Fucking Dumbass.
+//  // we can use the wordcount function of ft_split? that might work :)
+// }
+
+
+
+// old slow version:
 
 void read_map(t_map_data *map, char* file_path)
 {

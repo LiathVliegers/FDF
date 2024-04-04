@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:36:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 15:45:20 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:03:32 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	ft_exit(int error_code)
 		error_message = "ERROR: Empty map\n";
 	else if (error_code == 6)
 		error_message = "ERROR: Lines in file are not consistent\n";
+	else if (error_code == 7)
+		error_message = "ERROR: Loading the menu, image or window failed\n";
 	else
 		error_message = "ERROR: Unknown error\n";
 	ft_putstr_fd(error_message, STDERR_FILENO);

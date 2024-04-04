@@ -17,8 +17,7 @@ SRC						= \
 							errors_and_clear.c \
 							keys.c \
 							main.c \
-							menu.c \
-							parse_map.c \
+							parse_map.c
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
