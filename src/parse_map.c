@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/04 17:58:07 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:27:09 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ char	*validate_map_name(char *file_path)
 	}
 	if (ft_strrchr(file_path, '/'))
 		file_path = ft_strrchr(file_path, '/') + 1;
+	ft_printf("%s function finished\n", __FUNCTION__ );
 	return(ft_strjoin("LIATH'S FDF! map: ", file_path));
+
 }
 
 void	fill_point_values(t_point* points, char** split_line, int y)
@@ -45,6 +47,9 @@ void	fill_point_values(t_point* points, char** split_line, int y)
 		points[i].last_point = 0;
 		if (ft_strchr(split_line[i], ','))
 		{
+			// with the julia map we have to do this 2500000 times, ofcource my code will be slow.
+
+			// ipv split, use strchr to look for the ' ', so the pointer will move to the next number and we dont have to split every time
 			z_and_colour = ft_split(split_line[i], ',');
 			points[i].z = ft_atoi(z_and_colour[0]);
 			points[i].colour = get_colour(z_and_colour[1]);
@@ -58,8 +63,9 @@ void	fill_point_values(t_point* points, char** split_line, int y)
 		i++;
 	}
 	points[i - 1].last_point = 1;
-}
 
+}
+// HERE IS THE PROBLEM!
 void	parse_map_points(t_map_data* map)
 {
 	int i;
@@ -84,9 +90,12 @@ void	parse_map_points(t_map_data* map)
 		if (map->points == NULL)
 			ft_exit(2);
 		fill_point_values(map->points[i], split_line, i);
+		
 		ft_free_matrix(split_line);
 		i++;
+
 	}
+	ft_printf("%s function finished\n", __FUNCTION__ );
 }
 
 void allocate_map_lines(t_map_data* map) 
@@ -130,6 +139,10 @@ void parse_map_lines(t_map_data* map)
 		allocate_map_per_line(map, j, width);
 		ft_strlcpy(map->map_lines[j], map->full_map_buffer + i - width, width + 1);
 	}
+	
+	ft_printf("%s function finished\n", __FUNCTION__ );
+	
+
 }
 
 void set_defaults(char *file_path, t_map_data* map)
@@ -144,6 +157,8 @@ void set_defaults(char *file_path, t_map_data* map)
 	map->z_scale = 1.0;
 	map->angle = 1.0;
 	map->is_isometric = 1;
+	ft_printf("set_defaults function finished\n");
+
 }
 
 
@@ -174,10 +189,9 @@ void set_defaults(char *file_path, t_map_data* map)
 // 	}
 // 	close(fd);
 // 	set_defaults(file_path, map);
-// 	// how are we going to get the widht then he? Fucking Dumbass.
+// 	// how are we going to get the widht then he? Fucking smartass.
 //  // we can use the wordcount function of ft_split? that might work :)
 // }
-
 
 
 // old slow version:
@@ -207,6 +221,7 @@ void read_map(t_map_data *map, char* file_path)
 		temp = map->full_map_buffer;
 		line = get_next_line(fd);
 	}
+	ft_printf("read map function finished\n");
 	close(fd);
 	set_defaults(file_path, map);
 }

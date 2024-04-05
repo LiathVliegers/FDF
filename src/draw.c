@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:17:15 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/04 18:00:53 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:12:29 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	bresenham_line(t_point a, t_point b, t_map_data *map)
 		a.x += step_x;
 		a.y += step_y;
 	}
+	
 }
 
 

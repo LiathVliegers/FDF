@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:54:13 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/02 12:55:28 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:13:05 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ uint32_t get_colour(char* colour)
 	rgba = ft_pixel_colour(r, g, b, a);
 	free(col);
 	return(rgba);
+
 }

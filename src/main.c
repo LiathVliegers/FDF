@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/04 15:18:44 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:58:41 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_menu(t_map_data *map)
 {
-	map->menu_texture = mlx_load_png("/home/livliege/Documents/github/FDF/img/FDF(1).png");
+	map->menu_texture = mlx_load_png("/home/livliege/Documents/github/FDF/img/FDF(2).png");
 	if (!map->menu_texture)
         ft_exit(7); // ERROR: Loading the menu, image or window failed
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
@@ -23,6 +23,8 @@ void print_menu(t_map_data *map)
 	mlx_resize_image(map->menu_image, 700, HEIGHT);
 	if (mlx_image_to_window(map->window, map->menu_image, 0, 0) < 0)
         ft_exit(7); // ERROR: Loading the menu, image or window failed
+	ft_printf("%s function finished\n", __FUNCTION__ );
+
 }
 
 void	create_window(t_map_data* map)
@@ -43,6 +45,8 @@ void	create_window(t_map_data* map)
 	mlx_delete_texture(map->menu_texture);
 	
 	mlx_terminate(map->window);
+	ft_printf("%s function finished\n", __FUNCTION__ );
+	
 }
 
 int	main (int argc, char** argv)
@@ -63,9 +67,18 @@ int	main (int argc, char** argv)
 	create_window(map);
 	
 	clear_everything(map);
+	ft_printf("%s function finished\n", __FUNCTION__ );
+
 }
 
 
 
+// read map function finished				3,57 seconds
+// validate_map_name function finished		0,46 seconds
+// parse_map_lines function finished		1,16 seconds
+// parse_map_points function finished		70,50 seconds
+// set_defaults function finished			0,20 seconds
+// main function finished					0,13 seconds
 
+// 76 seconden in totaal
 
