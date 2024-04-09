@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/09 16:09:29 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:21:10 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*validate_map_name(char *file_path)
 
 void	fill_point_values(t_point* points, char** split_line, int y)
 {
-	int i;
-	char *comma;
+	int		i;
+	char*	comma;
 	
 	i = 0;
 	while (split_line[i] != NULL)

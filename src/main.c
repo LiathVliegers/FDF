@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:06 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:38:32 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main (int argc, char** argv)
 	
 	// print_map(map);
 	
-	// create_window(map);
+	create_window(map);
 	
 	clear_everything(map);
 	ft_printf("%s function finished\n", __FUNCTION__ );
@@ -76,7 +76,7 @@ int	main (int argc, char** argv)
 // read map function finished				3,57 seconds
 // validate_map_name function finished		0,46 seconds
 // parse_map_lines function finished		1,16 seconds
-// parse_map_points function finished		70,50 seconds
+// parse_map_points function finished		70,50 seconds FUCK FT_SPLIT AND FUCK FT_STRLEN
 // set_defaults function finished			0,20 seconds
 // main function finished					0,13 seconds
 
