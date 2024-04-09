@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:29:13 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/25 17:41:39 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:00:14 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Description         Allocates (with malloc(3)) and returns an array
                     with a NULL pointer.
 */
 
-#include "../../../inc/lib_liath.h"
+#include "/home/livliege/Documents/github/lib_liath/lib_liath.h"
 
 void	*ft_free(char **split_2d_array)
 {
@@ -41,7 +41,7 @@ void	*ft_free(char **split_2d_array)
 	return (NULL);
 }
 
-int	ft_wordcount(char const *s, char c)
+size_t	ft_wordcount(char const *s, char c)
 {
 	int	words;
 	int	new_word;
@@ -79,10 +79,11 @@ char	**ft_split_size(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	j;
-	size_t	i;
-	int		new_word;
-	char	**split_2d_array;
+	size_t			j;
+	size_t			i;
+	int				new_word;
+	char			**split_2d_array;
+	const size_t	size = ft_strlen(s);
 
 	i = SIZE_MAX;
 	j = 0;
@@ -90,11 +91,11 @@ char	**ft_split(char const *s, char c)
 	split_2d_array = ft_split_size(s, c);
 	if (split_2d_array == NULL)
 		return (NULL);
-	while (++i <= ft_strlen(s))
+	while (++i <= size)
 	{
 		if (s[i] != c && new_word < 0)
 			new_word = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && new_word >= 0)
+		else if ((s[i] == c || i == size) && new_word >= 0)
 		{
 			split_2d_array[j] = ft_substr(s, new_word, (i - new_word));
 			new_word = -1;

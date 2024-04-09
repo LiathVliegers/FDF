@@ -20,6 +20,7 @@ SRC						= \
 							parse_map.c
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
+
 all: $(NAME)
 
 $(OBJDIR):

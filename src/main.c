@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/05 17:58:41 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:43:06 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main (int argc, char** argv)
 	
 	// print_map(map);
 	
-	create_window(map);
+	// create_window(map);
 	
 	clear_everything(map);
 	ft_printf("%s function finished\n", __FUNCTION__ );
