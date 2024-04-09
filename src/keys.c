@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/04 18:02:29 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/09 18:33:34 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,43 +37,39 @@ void	key_action(int key, t_map_data* map)
 	if (key == MLX_KEY_D)
 		map->angle -= 0.02;
 		
-	// this is buggy, make better or take it out.
 	if (key == MLX_KEY_I)
 		map->is_isometric = 1;
 		
 	if (key == MLX_KEY_O)
 		map->is_isometric = 0;
-
+	
+	if (key == MLX_KEY_R)
+	{
+		map->x_offset = WIDTH / 3;
+		map->y_offset = HEIGHT / 3;
+		map->scale = 50.0 ;
+		map->z_scale = 1.0;
+		map->angle = 1.0;
+		map->is_isometric = 1;
+	}
 }
 
-
-int what_key(t_map_data* map)
+int	what_key(t_map_data *map)
 {
-	int keys[14];
-	int i;
+	int			i;
+	const int	keys[] = {MLX_KEY_ESCAPE, MLX_KEY_Z, MLX_KEY_X, \
+	MLX_KEY_RIGHT, MLX_KEY_LEFT, MLX_KEY_DOWN, MLX_KEY_UP, \
+	MLX_KEY_W, MLX_KEY_S, MLX_KEY_D, MLX_KEY_A, \
+	MLX_KEY_I, MLX_KEY_O, MLX_KEY_R, 0};
 
 	i = 0;
-	keys[0] = MLX_KEY_ESCAPE;
-	keys[1] = MLX_KEY_Z;
-	keys[2] = MLX_KEY_X;
-	keys[3] = MLX_KEY_RIGHT;
-	keys[4] = MLX_KEY_LEFT;
-	keys[5] = MLX_KEY_DOWN;
-	keys[6] = MLX_KEY_UP;
-	keys[7] = MLX_KEY_W;
-	keys[8] = MLX_KEY_S;
-	keys[9] = MLX_KEY_A;
-	keys[10] = MLX_KEY_D;
-	keys[11] = MLX_KEY_I;
-	keys[12] = MLX_KEY_O;
-	keys[13] = 0;
 	while (keys[i] != 0)
 	{
 		if (mlx_is_key_down(map->window, keys[i]))
-			return(keys[i]); // true
+			return (keys[i]);
 		i++;
 	}
-	return(0); // false
+	return (0);
 }
 
 void	key_is_pressed(void *data)
