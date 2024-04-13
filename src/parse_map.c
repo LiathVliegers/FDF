@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/10 16:26:12 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/13 23:10:48 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,18 +127,23 @@ void parse_map_lines(t_map_data* map)
 	}
 }
 
+void set_position(t_map_data* map)
+{
+	map->x_offset = WIDTH / (map->width / 2);
+	map->y_offset = HEIGHT / (map->height / 2);
+	map->scale = 50.0;
+	map->z_scale = 1.0;
+	map->angle = 1.0;
+	map->is_isometric = 1;
+}
+
 void set_defaults(char *file_path, t_map_data* map)
 {
 	map->title = validate_map_name(file_path);
 	allocate_map_lines(map);
 	parse_map_lines(map); 		// here we get the map width and height
 	parse_map_points(map);		// here we get x, y, z and colour values
-	map->x_offset = WIDTH / 3;
-	map->y_offset = HEIGHT / 3;
-	map->scale = 50.0;
-	map->z_scale = 1.0;
-	map->angle = 1.0;
-	map->is_isometric = 1;
+	set_position(map);
 }
 
 void read_map(t_map_data *map, char* file_path)

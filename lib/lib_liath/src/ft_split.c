@@ -25,7 +25,7 @@ Description         Allocates (with malloc(3)) and returns an array
                     with a NULL pointer.
 */
 
-#include "/home/livliege/Documents/github/lib_liath/lib_liath.h"
+#include "../../../inc/lib_liath.h"
 
 void	*ft_free(char **split_2d_array)
 {
@@ -41,7 +41,7 @@ void	*ft_free(char **split_2d_array)
 	return (NULL);
 }
 
-size_t	ft_wordcount(char const *s, char c)
+int	ft_wordcount(char const *s, char c)
 {
 	int	words;
 	int	new_word;

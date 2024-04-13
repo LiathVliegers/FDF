@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:17:15 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/05 17:12:29 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/13 23:14:29 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #define MAX(a, b)(a > b ? a : b)
 #define MOD(a)(a < 0 ? -a : a)
-
-
 
 float get_max(float a, float b) 
 {
@@ -89,12 +87,11 @@ void	bresenham_line(t_point a, t_point b, t_map_data *map)
 
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
-		if (a.x >= 0 && a.y >= 0 && a.x < WIDTH - 700 && a.y < HEIGHT)
+		if (a.x >= 0 && a.y >= 0 && a.x < IMG_WIDTH && a.y < HEIGHT)
 			mlx_put_pixel(map->image, a.x, a.y, b.colour);
 		a.x += step_x;
 		a.y += step_y;
 	}
-	
 }
 
 

@@ -2,15 +2,20 @@
 #ifndef FDF_H
 # define FDF_H
 
-// window size:
-#define WIDTH 3500
-#define HEIGHT 2000
+// window size CODAM:
+// #define WIDTH 3500
+// #define HEIGHT 2000
+
+// window size HOME:
+#define WIDTH 1750
+#define HEIGHT 1000
+
+#define MENU_WIDTH (WIDTH / 4)
+#define IMG_WIDTH (WIDTH - MENU_WIDTH)
 
 # include <MLX42/MLX42.h>
 # include <math.h>
 # include "lib_liath.h"
-// # include <stdbool.h>
-// # include <errno.h>
 
 typedef struct s_point
 {
@@ -54,6 +59,7 @@ void		ft_free_matrix(char **lines);
 uint32_t	get_colour(char* colour);
 void		key_is_pressed(void *data);
 void		draw_FDF(t_map_data *map);
+void		set_position(t_map_data *map);
 
 // debugging:
 void		print_map(t_map_data* map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/09 16:38:32 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/13 23:06:39 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 void print_menu(t_map_data *map)
 {
-	map->menu_texture = mlx_load_png("/home/livliege/Documents/github/FDF/img/FDF(2).png");
+	map->menu_texture = mlx_load_png("/home/liath/Documents/Github/FDF/img/FDF.png");
 	if (!map->menu_texture)
-        ft_exit(7); // ERROR: Loading the menu, image or window failed
+        ft_exit(7); // ERROR: Loading the menu failed
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
 	if (!map->menu_image)
-        ft_exit(7); // ERROR: Loading the menu, image or window failed
-	mlx_resize_image(map->menu_image, 700, HEIGHT);
+        ft_exit(8); // ERROR: Loading the image (menu) failed
+	mlx_resize_image(map->menu_image, MENU_WIDTH, HEIGHT);
 	if (mlx_image_to_window(map->window, map->menu_image, 0, 0) < 0)
-        ft_exit(7); // ERROR: Loading the menu, image or window failed
-	ft_printf("%s function finished\n", __FUNCTION__ );
-
+        ft_exit(9); // ERROR: Loading the window (menu) failed
 }
 
 void	create_window(t_map_data* map)
 {
 	map->window = mlx_init(WIDTH, HEIGHT, map->title, false);
-	map->image = mlx_new_image(map->window, WIDTH - 700, HEIGHT);
-	mlx_image_to_window(map->window, map->image, 700, 0);
+	map->image = mlx_new_image(map->window, WIDTH - MENU_WIDTH, HEIGHT);
+	mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);
 	
 	print_menu(map);
 	draw_FDF(map);
@@ -45,7 +43,6 @@ void	create_window(t_map_data* map)
 	mlx_delete_texture(map->menu_texture);
 	
 	mlx_terminate(map->window);
-	ft_printf("%s function finished\n", __FUNCTION__ );
 	
 }
 
@@ -67,7 +64,6 @@ int	main (int argc, char** argv)
 	create_window(map);
 	
 	clear_everything(map);
-	ft_printf("%s function finished\n", __FUNCTION__ );
 
 }
 
