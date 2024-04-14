@@ -14,6 +14,7 @@
 #define IMG_WIDTH (WIDTH - MENU_WIDTH)
 
 # include <MLX42/MLX42.h>
+// # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 # include "lib_liath.h"
 

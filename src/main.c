@@ -6,7 +6,7 @@
 /*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/13 23:06:39 by liath            ###   ########.fr       */
+/*   Updated: 2024/04/14 11:06:30 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void print_menu(t_map_data *map)
         ft_exit(7); // ERROR: Loading the menu failed
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
 	if (!map->menu_image)
-        ft_exit(8); // ERROR: Loading the image (menu) failed
+        ft_exit(7); // ERROR: Loading the image (menu) failed
 	mlx_resize_image(map->menu_image, MENU_WIDTH, HEIGHT);
 	if (mlx_image_to_window(map->window, map->menu_image, 0, 0) < 0)
-        ft_exit(9); // ERROR: Loading the window (menu) failed
+        ft_exit(7); // ERROR: Loading the window (menu) failed
 }
 
 void	create_window(t_map_data* map)
@@ -64,17 +64,4 @@ int	main (int argc, char** argv)
 	create_window(map);
 	
 	clear_everything(map);
-
 }
-
-
-
-// read map function finished				3,57 seconds
-// validate_map_name function finished		0,46 seconds
-// parse_map_lines function finished		1,16 seconds
-// parse_map_points function finished		70,50 seconds FUCK FT_SPLIT AND FUCK FT_STRLEN
-// set_defaults function finished			0,20 seconds
-// main function finished					0,13 seconds
-
-// 76 seconden in totaal
-
