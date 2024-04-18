@@ -1,0 +1,8 @@
+lib/MLX42
+fdf
+.obj
+.obj_lib
+.vscode
+*.a
+/img
+OLD_FDF/lib/MLX42
