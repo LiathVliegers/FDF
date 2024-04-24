@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/24 18:39:15 by liath            ###   ########.fr       */
+/*   Updated: 2024/04/24 20:26:18 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_menu(t_map_data *map)
 {
-	map->menu_texture = mlx_load_png("./img/FDF(3).png");
+	map->menu_texture = mlx_load_png("./img/FDF.png");
 	if (!map->menu_texture)
         ft_exit(7); // ERROR: Loading the menu failed
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
