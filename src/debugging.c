@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:48:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/03 16:00:46 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:24:38 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,20 @@ void	rose_curve(t_map_data *map)
 	}	
 }
 
+void fill_canvas(t_map_data *map)
+{
+	int x = 0;
+	int y = 0;
 
+	while (y < HEIGHT)
+	{
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(map->image, x, y, 0x000000);
+			x++;
+		}
+		y++;
+	}
+}
 
 

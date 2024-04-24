@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/14 11:06:30 by liath            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:41:15 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_menu(t_map_data *map)
 {
-	map->menu_texture = mlx_load_png("/home/liath/Documents/Github/FDF/img/FDF.png");
+	map->menu_texture = mlx_load_png("/home/livliege/Documents/github/FDF/img/FDF(3).png");
 	if (!map->menu_texture)
         ft_exit(7); // ERROR: Loading the menu failed
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
@@ -31,6 +31,7 @@ void	create_window(t_map_data* map)
 	map->image = mlx_new_image(map->window, WIDTH - MENU_WIDTH, HEIGHT);
 	mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);
 	
+
 	print_menu(map);
 	draw_FDF(map);
 	// rose_curve(map);

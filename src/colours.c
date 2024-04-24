@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:54:13 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/05 17:13:05 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:45:57 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,40 @@ int	atohex(char *hex)
 
 	while (hex[i] != '\0') 
 	{
-        if (hex[i] >= '0' && hex[i] <= '9')
-            numb = numb * 16 + (hex[i] - '0');
-        else if (hex[i] >= 'a' && hex[i] <= 'f')
-            numb = numb * 16 + (hex[i] - 'a' + 10);
-        else if (hex[i] >= 'A' && hex[i] <= 'F')
-            numb = numb * 16 + (hex[i] - 'A' + 10);
-        i++;
-    }
+		if (hex[i] >= '0' && hex[i] <= '9')
+			numb = numb * 16 + (hex[i] - '0');
+		else if (hex[i] >= 'a' && hex[i] <= 'f')
+			numb = numb * 16 + (hex[i] - 'a' + 10);
+		else if (hex[i] >= 'A' && hex[i] <= 'F')
+			numb = numb * 16 + (hex[i] - 'A' + 10);
+		i++;
+	}
 	numb = (numb << 8) | 0xFF;
-    return (numb);
+	return (numb);
 }
 int32_t ft_pixel_colour(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }	
 
 int get_r(int rgba)
 {
-    return ((rgba >> 24) & 0xFF);
+	return ((rgba >> 24) & 0xFF);
 }
 
 int get_g(int rgba)
 {
-    return ((rgba >> 16) & 0xFF);
+	return ((rgba >> 16) & 0xFF);
 }
 
 int get_b(int rgba)
 {
-    return ((rgba >> 8) & 0xFF);
+	return ((rgba >> 8) & 0xFF);
 }
 
 int get_a(int rgba)
 {
-    return (rgba & 0xFF);
+	return (rgba & 0xFF);
 }
 
 uint32_t get_colour(char* colour)

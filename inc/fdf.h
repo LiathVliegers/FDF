@@ -3,18 +3,17 @@
 # define FDF_H
 
 // window size CODAM:
-// #define WIDTH 3500
-// #define HEIGHT 2000
+#define WIDTH 3500
+#define HEIGHT 2000
 
 // window size HOME:
-#define WIDTH 1750
-#define HEIGHT 1000
+// #define WIDTH 1750
+// #define HEIGHT 1000
 
-#define MENU_WIDTH (WIDTH / 4)
+#define MENU_WIDTH (WIDTH / 5)
 #define IMG_WIDTH (WIDTH - MENU_WIDTH)
 
 # include <MLX42/MLX42.h>
-// # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 # include "lib_liath.h"
 
@@ -49,10 +48,6 @@ typedef struct s_map_data
 	int			is_isometric;
 } t_map_data;
 
-// alleen de functie die in een andere file staat moet hier komen, 
-// de rest moeten static functions zijn, want die kunnen niet aangeroepen worden vanuit een andere file
-// = kleinere kans op naam-clashing :D
-
 void		read_map(t_map_data *map, char* file_path);
 void		ft_exit(int error_code);
 void		clear_everything(t_map_data *map);
@@ -65,5 +60,6 @@ void		set_position(t_map_data *map);
 // debugging:
 void		print_map(t_map_data* map);
 void		rose_curve(t_map_data *map);
+void		fill_canvas(t_map_data *map);
 
 #endif

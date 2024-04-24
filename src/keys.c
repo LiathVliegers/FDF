@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/13 22:25:06 by liath            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:37:40 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 void	key_action(int key, t_map_data* map)
 {
-	if (key == MLX_KEY_ESCAPE)
-		mlx_close_window(map->window);
 	if (key == MLX_KEY_Z)
 		map->scale += 0.5;	
 	if (key == MLX_KEY_X)
 		map->scale -= 0.5;	
 	if (key == MLX_KEY_RIGHT)
-		map->x_offset += 5;
+		map->x_offset += 8;
 	if (key == MLX_KEY_LEFT)
-		map->x_offset -= 5;	
+		map->x_offset -= 8;	
 	if (key == MLX_KEY_UP)
-		map->y_offset -= 5;
+		map->y_offset -= 8;
 	if (key == MLX_KEY_DOWN)
-		map->y_offset += 5;
+		map->y_offset += 8;
 	if (key == MLX_KEY_W)
 		map->z_scale += 0.1;
 	if (key == MLX_KEY_S)
@@ -36,13 +34,16 @@ void	key_action(int key, t_map_data* map)
 		map->angle += 0.01;
 	if (key == MLX_KEY_D)
 		map->angle -= 0.01;
-		
+}
+
+void	key_action_two(int key, t_map_data* map)
+{
+	if (key == MLX_KEY_ESCAPE)
+		mlx_close_window(map->window);
 	if (key == MLX_KEY_I)
 		map->is_isometric = 1;
-		
 	if (key == MLX_KEY_O)
 		map->is_isometric = 0;
-	
 	if (key == MLX_KEY_R)
 		set_position(map);
 }
@@ -74,6 +75,7 @@ void	key_is_pressed(void *data)
 	if (key > 0)
 	{
 		key_action(key, map);
+		key_action_two(key, map);
 		mlx_delete_image(map->window, map->image);
 		map->image = mlx_new_image(map->window, IMG_WIDTH, HEIGHT);
 		mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);

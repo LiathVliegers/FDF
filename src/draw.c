@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:17:15 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/13 23:14:29 by liath            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:25:47 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,13 @@ void	bresenham_line(t_point a, t_point b, t_map_data *map)
 	float	step_x;
 	float	step_y;
 	float	max;
-	// uint32_t	colour;
-	// zoom
+
 	a.x *= map->scale;
 	a.y *= map->scale;
 	b.x *= map->scale;
 	b.y *= map->scale;
 	a.z *= map->z_scale;
 	b.z *= map->z_scale;
-
-	// isometric shit
 	if (map->is_isometric == 1)
 	{
 		a.x = (a.x - a.y) * cos(map->angle);
@@ -72,13 +69,10 @@ void	bresenham_line(t_point a, t_point b, t_map_data *map)
 		b.x = (b.x - b.y) * cos(map->angle);
 		b.y = (b.x + b.y) * sin(map->angle) - b.z;
 	}
-	
-	// add offset
 	a.x += map->x_offset;
 	a.y += map->y_offset;
 	b.x += map->x_offset;
 	b.y += map->y_offset;
-
 	step_x = b.x - a.x;
 	step_y = b.y - a.y;
 	max = get_max(get_mod(step_x), get_mod(step_y));
@@ -100,6 +94,7 @@ void draw_FDF(t_map_data *map)
 	int		y;
 	int		x;
 	
+
 	y = 0;
 	while (y < map->height)
 	{
@@ -131,8 +126,4 @@ if not: calculate distnace between the points, NO.
 Never mind.
 jawel you can do it :)
 oke :(
-	
-
-
-
 */

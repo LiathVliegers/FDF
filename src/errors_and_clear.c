@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   errors_and_clear.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:36:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/14 11:02:43 by liath            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:51:08 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-
-
-
 
 // 1: ERROR: Incorrect number of arguments
 // 2: ERROR: Memory allocation failed
@@ -22,7 +18,6 @@
 // 4: ERROR: Invalid map file
 // 5: ERROR: Empty map
 // 6: ERROR: Lines in file are not consistent
-
 
 void	ft_exit(int error_code)
 {
@@ -35,7 +30,7 @@ void	ft_exit(int error_code)
 	else if (error_code == 3)
 		error_message = "ERROR: Reading the file failed\n";
 	else if (error_code == 4)
-		error_message = "ERROR: Invalid map file\n";
+		error_message = "ERROR: Invalid map\n";
 	else if (error_code == 5)
 		error_message = "ERROR: Empty map\n";
 	else if (error_code == 6)
@@ -87,7 +82,7 @@ void	ft_free_lines_matrix(char **map_lines, t_map_data *map)
 	free(map_lines);
 }
 
-void clear_everything(t_map_data *map)
+void	clear_everything(t_map_data *map)
 {
 	free(map->title);
 	free(map->full_map_buffer);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/13 23:10:48 by liath            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:02:51 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*validate_map_name(char *file_path)
 	while (ext[i])
 	{
 		if (j == 0 || file_path[j] != ext[i])
-			ft_exit(4);	// 4: ERROR: Invalid map file
+			ft_exit(4);
 		j--;
 		i++;
 	}
@@ -54,7 +54,6 @@ void	fill_point_values(t_point* points, char** split_line, int y)
 	points[i - 1].last_point = 1;
 }
 
-// HERE IS THE PROBLEM!
 void	parse_map_points(t_map_data* map)
 {
 	int i;
@@ -91,11 +90,12 @@ void allocate_map_lines(t_map_data* map)
 		ft_exit(2);
 }
 
-void allocate_map_per_line(t_map_data* map, int i, int width) 
+void allocate_and_copy_line(t_map_data* map, int i, int j, int width) 
 {
-	map->map_lines[i] = (char*)malloc(sizeof(char) * (width + 1));
-	if (map->map_lines[i] == NULL)
+	map->map_lines[j] = (char*)malloc(sizeof(char) * (width + 1));
+	if (map->map_lines[j] == NULL)
 		ft_exit(2);
+	ft_strlcpy(map->map_lines[j], map->full_map_buffer + i - width, width + 1);
 }
 
 void parse_map_lines(t_map_data* map) 
@@ -111,8 +111,9 @@ void parse_map_lines(t_map_data* map)
 	{
 		if (map->full_map_buffer[i] == '\n')
 		{
-			allocate_map_per_line(map, j, width);
-			ft_strlcpy(map->map_lines[j], map->full_map_buffer + i - width, width + 1);
+			if (map->full_map_buffer[i + 1] == '\n')
+				ft_exit(4);
+			allocate_and_copy_line(map, i, j, width);
 			width = 0;
 			j++;
 		} 
@@ -121,16 +122,13 @@ void parse_map_lines(t_map_data* map)
 		i++;
 	}
 	if (width > 0)
-	{
-		allocate_map_per_line(map, j, width);
-		ft_strlcpy(map->map_lines[j], map->full_map_buffer + i - width, width + 1);
-	}
+		allocate_and_copy_line(map, i, j, width);
 }
 
 void set_position(t_map_data* map)
 {
-	map->x_offset = WIDTH / (map->width / 2);
-	map->y_offset = HEIGHT / (map->height / 2);
+	map->x_offset = WIDTH / (map->width / 10);
+	map->y_offset = HEIGHT / (map->height / 3);
 	map->scale = 50.0;
 	map->z_scale = 1.0;
 	map->angle = 1.0;
@@ -141,8 +139,8 @@ void set_defaults(char *file_path, t_map_data* map)
 {
 	map->title = validate_map_name(file_path);
 	allocate_map_lines(map);
-	parse_map_lines(map); 		// here we get the map width and height
-	parse_map_points(map);		// here we get x, y, z and colour values
+	parse_map_lines(map);
+	parse_map_points(map);
 	set_position(map);
 }
 
