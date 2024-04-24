@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/18 17:41:15 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:39:15 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_menu(t_map_data *map)
 {
-	map->menu_texture = mlx_load_png("/home/livliege/Documents/github/FDF/img/FDF(3).png");
+	map->menu_texture = mlx_load_png("./img/FDF(3).png");
 	if (!map->menu_texture)
         ft_exit(7); // ERROR: Loading the menu failed
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
@@ -28,9 +28,9 @@ void print_menu(t_map_data *map)
 void	create_window(t_map_data* map)
 {
 	map->window = mlx_init(WIDTH, HEIGHT, map->title, false);
+	// MAKE SURE TO PROTECT ALL THIS SHIT!
 	map->image = mlx_new_image(map->window, WIDTH - MENU_WIDTH, HEIGHT);
 	mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);
-	
 
 	print_menu(map);
 	draw_FDF(map);
@@ -44,7 +44,6 @@ void	create_window(t_map_data* map)
 	mlx_delete_texture(map->menu_texture);
 	
 	mlx_terminate(map->window);
-	
 }
 
 int	main (int argc, char** argv)
