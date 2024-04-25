@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/18 17:02:51 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:40:52 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,10 @@ void parse_map_lines(t_map_data* map)
 
 void set_position(t_map_data* map)
 {
-	map->x_offset = WIDTH / (map->width / 10);
-	map->y_offset = HEIGHT / (map->height / 3);
+	// map->x_offset = WIDTH / (map->width / 10);
+	// map->y_offset = HEIGHT / (map->height / 3);
+	map->x_offset = 0;
+	map->y_offset = 0;
 	map->scale = 50.0;
 	map->z_scale = 1.0;
 	map->angle = 1.0;

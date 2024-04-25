@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/24 20:26:18 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:08:41 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void print_menu(t_map_data *map)
 	if (mlx_image_to_window(map->window, map->menu_image, 0, 0) < 0)
         ft_exit(7); // ERROR: Loading the window (menu) failed
 }
+
+// mlx->width, mlx->height
 
 void	create_window(t_map_data* map)
 {

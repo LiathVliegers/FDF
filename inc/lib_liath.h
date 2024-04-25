@@ -6,11 +6,11 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:21:00 by livliege          #+#    #+#             */
-/*   Updated: 2024/03/25 17:51:28 by livliege         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:22:20 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_LIATH_H
+# ifndef LIB_LIATH_H
 # define LIB_LIATH_H
 
 # include <unistd.h>
@@ -25,13 +25,13 @@
 
 # define FD_LIMIT 1024
 
-#define RED "\033[91m"
-#define GREEN "\033[92m"
-#define YELLOW "\033[33m"
-#define BLUE "\033[94m"
-#define PURPLE "\033[35m"
-#define LIGHTBLUE "\033[36m"
-#define DEFAULT "\033[0m"
+# define RED "\033[91m"
+# define GREEN "\033[92m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[94m"
+# define PURPLE "\033[35m"
+# define LIGHTBLUE "\033[36m"
+# define DEFAULT "\033[0m"
 
 # ifndef BUFFER_SIZE
 # define BUFFER_SIZE 4096

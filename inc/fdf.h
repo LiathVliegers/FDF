@@ -1,17 +1,17 @@
 
-#ifndef FDF_H
+# ifndef FDF_H
 # define FDF_H
 
 // window size CODAM:
-#define WIDTH 3500
-#define HEIGHT 2000
+# define WIDTH 3500
+# define HEIGHT 2000
 
 // window size HOME:
 // #define WIDTH 1750
 // #define HEIGHT 1000
 
-#define MENU_WIDTH (WIDTH / 5)
-#define IMG_WIDTH (WIDTH - MENU_WIDTH)
+# define MENU_WIDTH (WIDTH / 5)
+# define IMG_WIDTH (WIDTH - MENU_WIDTH)
 
 # include <MLX42/MLX42.h>
 # include <math.h>
