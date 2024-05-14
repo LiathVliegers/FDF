@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/25 14:40:52 by livliege         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:47:19 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,14 +127,16 @@ void parse_map_lines(t_map_data* map)
 
 void set_position(t_map_data* map)
 {
-	// map->x_offset = WIDTH / (map->width / 10);
-	// map->y_offset = HEIGHT / (map->height / 3);
-	map->x_offset = 0;
-	map->y_offset = 0;
+	map->x_offset = WIDTH / (map->width);
+	map->y_offset = HEIGHT / (map->height);
+	// map->x_offset = 20;
+	// map->y_offset = 200;
 	map->scale = 50.0;
+// this one is good for the julia! but i need to adjust it for the smaller maps.
+	// map->scale = map->width / 100;
 	map->z_scale = 1.0;
 	map->angle = 1.0;
-	map->is_isometric = 1;
+	map->is_isometric = 0;
 }
 
 void set_defaults(char *file_path, t_map_data* map)
