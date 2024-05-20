@@ -3,67 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/25 17:08:41 by livliege         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:09:31 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void print_menu(t_map_data *map)
+void	print_menu(t_map_data *map)
 {
 	map->menu_texture = mlx_load_png("./img/FDF.png");
 	if (!map->menu_texture)
-        ft_exit(7); // ERROR: Loading the menu failed
+		ft_exit(7);
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
 	if (!map->menu_image)
-        ft_exit(7); // ERROR: Loading the image (menu) failed
+		ft_exit(7);
 	mlx_resize_image(map->menu_image, MENU_WIDTH, HEIGHT);
 	if (mlx_image_to_window(map->window, map->menu_image, 0, 0) < 0)
-        ft_exit(7); // ERROR: Loading the window (menu) failed
+		ft_exit(7);
 }
 
-// mlx->width, mlx->height
-
-void	create_window(t_map_data* map)
+void	create_window(t_map_data *map)
 {
 	map->window = mlx_init(WIDTH, HEIGHT, map->title, false);
-	// MAKE SURE TO PROTECT ALL THIS SHIT!
 	map->image = mlx_new_image(map->window, WIDTH - MENU_WIDTH, HEIGHT);
+	if (map->window == NULL || map->image == NULL)
+		ft_exit(1);
 	mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);
-
 	print_menu(map);
-	draw_FDF(map);
-	// rose_curve(map);
-	
+	draw_fdf(map);
 	mlx_loop_hook(map->window, key_is_pressed, map);
 	mlx_loop(map->window);
-	
-	// delete or free menu
 	mlx_delete_image(map->window, map->menu_image);
 	mlx_delete_texture(map->menu_texture);
-	
 	mlx_terminate(map->window);
 }
 
-int	main (int argc, char** argv)
+int	main(int argc, char **argv)
 {
 	t_map_data	*map;
 
 	if (argc != 2)
-		ft_exit(1);	// 1: ERROR: Incorrect number of arguments
-
-	map = (t_map_data*)ft_calloc(sizeof(t_map_data), 1);
+		ft_exit(1);
+	map = (t_map_data *)ft_calloc(sizeof(t_map_data), 1);
 	if (map == NULL)
-		ft_exit(2);	// 2: ERROR: Memory allocation failed
-
+		ft_exit(2);
 	read_map(map, argv[1]);
-	
-	// print_map(map);
-	
 	create_window(map);
-	
 	clear_everything(map);
 }

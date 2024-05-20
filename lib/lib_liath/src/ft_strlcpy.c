@@ -45,7 +45,8 @@ RETURN VALUES
      rect or that dst is not a proper “C” string).  The check exists to pre‐
      vent potential security problems in incorrect code.
 !!!!!!!
-make sure you add a +1 to the length you want to copy to make sure there is space for the '\0'
+make sure you add a +1 to the length you want to copy to make sure 
+there is space for the '\0'
 */
 
 #include "../../../inc/lib_liath.h"

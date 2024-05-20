@@ -2,7 +2,7 @@
 
 NAME				= fdf
 CC 					= cc
-CFLAGS 				= -Wall -Werror -Wextra -O3 -g -fsanitize=address
+CFLAGS 				= -Wall -Werror -Wextra -O3
 MLX_HEADERS			= -I lib/MLX42/include
 MY_HEADERS			= -I inc
 
@@ -11,13 +11,16 @@ LIBS				= lib/MLX42/build/libmlx42.a $(LIB_LIATH) -ldl -lglfw -pthread -lm -fsan
 OBJDIR				= .obj
 SRC_DIR				= src
 SRC						= \
+							allocate.c \
 							colours.c \
 							debugging.c \
+							defaults.c \
 							draw.c \
 							errors_and_clear.c \
 							keys.c \
 							main.c \
-							parse_map.c
+							parse_map.c \
+							rgb_pixels.c
 OBJ					= $(SRC:%.c=$(OBJDIR)/%.o)
 
 

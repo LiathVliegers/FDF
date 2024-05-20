@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_and_clear.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:36:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/18 16:51:08 by livliege         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:31:31 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 
 void	ft_exit(int error_code)
 {
-	char* error_message;
-	
+	char	*error_message;
+
 	if (error_code == 1)
-		error_message = "ERROR: Incorrect number of arguments\nPlease include the path to a .fdf map file as argument\n";
+		error_message = "ERROR: Incorrect number of arguments\n \
+		Please include the path to a .fdf map file as argument\n";
 	else if (error_code == 2)
 		error_message = "ERROR: Memory allocation failed\n";
 	else if (error_code == 3)
@@ -45,7 +46,7 @@ void	ft_exit(int error_code)
 
 void	ft_free_points_matrix(t_point **points, t_map_data *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < map->height)
@@ -58,7 +59,7 @@ void	ft_free_points_matrix(t_point **points, t_map_data *map)
 
 void	ft_free_matrix(char **lines)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (lines[i] != NULL)
@@ -71,7 +72,7 @@ void	ft_free_matrix(char **lines)
 
 void	ft_free_lines_matrix(char **map_lines, t_map_data *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < map->height)

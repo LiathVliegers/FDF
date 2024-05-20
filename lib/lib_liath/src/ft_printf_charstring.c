@@ -26,4 +26,3 @@ int	ft_print_string(char *str)
 	len = ft_strlen(str);
 	return (write(1, str, len));
 }
-

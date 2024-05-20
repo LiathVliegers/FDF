@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lib_liath.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:21:00 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/25 14:22:20 by livliege         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:31:12 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef LIB_LIATH_H
+#ifndef LIB_LIATH_H
 # define LIB_LIATH_H
 
 # include <unistd.h>
@@ -34,7 +34,7 @@
 # define DEFAULT "\033[0m"
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 4096
+#  define BUFFER_SIZE 4096
 # endif
 
 // libft:

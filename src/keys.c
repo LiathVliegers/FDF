@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/14 17:45:35 by livliege         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:09:31 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	key_action(int key, t_map_data* map)
+void	key_action(int key, t_map_data *map)
 {
 	if (key == MLX_KEY_Z)
-		map->scale += 0.5;	
+		map->scale += 0.5;
 	if (key == MLX_KEY_X)
-		map->scale -= 0.5;	
+		map->scale -= 0.5;
 	if (key == MLX_KEY_RIGHT)
 		map->x_offset += 8;
 	if (key == MLX_KEY_LEFT)
-		map->x_offset -= 8;	
+		map->x_offset -= 8;
 	if (key == MLX_KEY_UP)
 		map->y_offset -= 8;
 	if (key == MLX_KEY_DOWN)
@@ -36,7 +36,7 @@ void	key_action(int key, t_map_data* map)
 		map->angle -= 0.01;
 }
 
-void	key_action_two(int key, t_map_data* map)
+void	key_action_two(int key, t_map_data *map)
 {
 	if (key == MLX_KEY_ESCAPE)
 		mlx_close_window(map->window);
@@ -68,9 +68,10 @@ int	what_key(t_map_data *map)
 
 void	key_is_pressed(void *data)
 {
-	t_map_data *map = data;
-	int key;
-	
+	t_map_data	*map;
+	int			key;
+
+	map = (t_map_data *)data;
 	key = what_key(map);
 	if (key > 0)
 	{
@@ -79,6 +80,6 @@ void	key_is_pressed(void *data)
 		mlx_delete_image(map->window, map->image);
 		map->image = mlx_new_image(map->window, IMG_WIDTH, HEIGHT);
 		mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);
-		draw_FDF(map);
+		draw_fdf(map);
 	}
 }
