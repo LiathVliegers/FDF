@@ -6,7 +6,7 @@
 /*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/20 16:09:31 by liath            ###   ########.fr       */
+/*   Updated: 2024/05/21 18:36:51 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	key_action(int key, t_map_data *map)
 {
 	if (key == MLX_KEY_Z)
-		map->scale += 0.5;
+		map->scale += 0.05;
 	if (key == MLX_KEY_X)
-		map->scale -= 0.5;
+		map->scale -= 0.05;
 	if (key == MLX_KEY_RIGHT)
 		map->x_offset += 8;
 	if (key == MLX_KEY_LEFT)
@@ -27,9 +27,9 @@ void	key_action(int key, t_map_data *map)
 	if (key == MLX_KEY_DOWN)
 		map->y_offset += 8;
 	if (key == MLX_KEY_W)
-		map->z_scale += 0.05;
+		map->z_scale += 0.02;
 	if (key == MLX_KEY_S)
-		map->z_scale -= 0.05;
+		map->z_scale -= 0.02;
 	if (key == MLX_KEY_A)
 		map->angle += 0.01;
 	if (key == MLX_KEY_D)

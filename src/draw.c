@@ -6,7 +6,7 @@
 /*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:17:15 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/20 16:09:31 by liath            ###   ########.fr       */
+/*   Updated: 2024/05/21 15:49:52 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	bresenham_line(t_point a, t_point b, t_map_data *map)
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
 		if (a.x >= 0 && a.y >= 0 && a.x < IMG_WIDTH && a.y < HEIGHT)
-			mlx_put_pixel(map->image, a.x, a.y, b.colour);
+			mlx_put_pixel(map->image, a.x, a.y, a.colour);
 		a.x += step_x;
 		a.y += step_y;
 	}
