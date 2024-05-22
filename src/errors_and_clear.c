@@ -6,18 +6,11 @@
 /*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:36:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/20 15:31:31 by liath            ###   ########.fr       */
+/*   Updated: 2024/05/22 17:05:03 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-// 1: ERROR: Incorrect number of arguments
-// 2: ERROR: Memory allocation failed
-// 3: ERROR: Reading the file failed
-// 4: ERROR: Invalid map file
-// 5: ERROR: Empty map
-// 6: ERROR: Lines in file are not consistent
 
 void	ft_exit(int error_code)
 {

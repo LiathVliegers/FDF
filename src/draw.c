@@ -6,34 +6,9 @@
 /*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:17:15 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/21 15:49:52 by liath            ###   ########.fr       */
+/*   Updated: 2024/05/22 17:04:38 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// a.x = (a.x - a.y) * cos(map->angle);
-//		This line subtracts a.y from a.x and then multiplies the result by 
-//		the cosine of the angle specified by map->angle.
-//		It seems to be rotating the point a around the z-axis.
-
-// a.y = (a.x + a.y) * sin(map->angle) - a.z;
-//		This line adds the original a.x and a.y, then multiplies the result 
-//		by the sine of the angle specified by map->angle.
-//		After that, it subtracts a.z.
-//		This transformation likely involves both rotation and translation.
-
-// b.x = (b.x - b.y) * cos(map->angle);
-//		Similar to the first line, this line subtracts b.y from b.x and then 
-//		multiplies the result by the cosine of the angle specified by 
-//		map->angle.
-//		Again, it seems to be rotating the point b around the z-axis.
-
-// b.y = (b.x + b.y) * sin(map->angle) - b.z;
-//		Similar to the second line, this line adds the original b.x and b.y, 
-//		then multiplies the result by the sine of the angle specified by 
-//		map->angle.
-//		After that, it subtracts b.z.
-//		Like with a, this transformation likely involves both rotation 
-//		and translation.
 
 #include "../inc/fdf.h"
 
@@ -117,18 +92,3 @@ void	draw_fdf(t_map_data *map)
 		y++;
 	}
 }
-
-// functie die de x punten returned (horizontale lijn) 
-// functie die de y punten berekend, verticale lijn (fml)
-// then you have a map
-// dan kijken naar de octave van de bresenham line algorithm joepie
-// thank you jisse
-// No worries <3
-
-/*
-check if a and point b have same colour
-if not: calculate distnace between the points, NO.
-Never mind.
-jawel you can do it :)
-oke :(
-*/

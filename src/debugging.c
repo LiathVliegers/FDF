@@ -3,36 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   debugging.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:48:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/04/18 17:24:38 by livliege         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:18:28 by liath            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// functie die de x punten returned (horizontale lijn) 
+// functie die de y punten berekend, verticale lijn (fml)
+// then you have a map
+// dan kijken naar de octave van de bresenham line algorithm joepie
+// thank you jisse
+// No worries <3
+
+// check if a and point b have same colour
+// if not: calculate distnace between the points, NO.
+// Never mind.
+// jawel you can do it :)
+// oke :(
+
 #include "../inc/fdf.h"
 
-
-void print_map(t_map_data* map)
+void	print_map(t_map_data *map)
 {
+	int	y;
+	int	x;
+
 	ft_printf("title:	%s\n", map->title);
 	ft_printf("height:	%d\n", map->height);
 	ft_printf("width:	%d\n", map->width);
 	ft_printf("scale: %d\n", (int)map->scale);
 	ft_printf("x_offset: %d\n", (int)map->x_offset);
 	ft_printf("y_offset: %d\n", (int)map->y_offset);
-	// ft_printf("full buffer:	\n%s\n", map->full_map_buffer);
-
-	// // print map lines (strings)
-	// int i = 0;
-	// while (i < map->height)
-	// {
-	// 	ft_printf("lines: %s\n", map->map_lines[i]);
-	// 	i++;
-	// }
-
-	int y;
-	int x;
 	y = 0;
 	while (y < map->height)
 	{
@@ -41,30 +44,29 @@ void print_map(t_map_data* map)
 		{
 			ft_printf("y = %d ", (int)map->points[y][x].y);
 			ft_printf("x = %d ", (int)map->points[y][x].x);
-			
-			// ft_printf("%d ", (int)map->points[y][x].z);
-			// ft_printf("%d ", map->points[y][x].last_point);
-			// ft_printf("colour = %X ", map->points[y][x].colour);
 			ft_printf("\n");
 			x++;
 		}
-		// ft_printf("\n"); // use this for the z values
 		y++;
 	}
 }
 
-
 void	rose_curve(t_map_data *map)
 {
-	int colour = 0xFFFF00FF;
-	float n = 5;
-	float d = 6;
-	float k = n / d;
-	float angle = 0;
-	float radius;
-	int x;
-	int y;
-	
+	int		colour;
+	float	n;
+	float	d;
+	float	k;
+	float	angle;
+	float	radius;
+	int		x;
+	int		y;
+
+	n = 5;
+	d = 6;
+	k = n / d;
+	angle = 0;
+	colour = 0xFFFF00FF;
 	while (angle < 3610)
 	{
 		radius = 500 * cos(k * angle);
@@ -72,15 +74,17 @@ void	rose_curve(t_map_data *map)
 		y = radius * sin(angle);
 		mlx_put_pixel(map->image, x + (WIDTH / 2), y + (HEIGHT / 2), colour);
 		angle += 0.001;
-		// colour += 2550;
-	}	
+		colour += 2550;
+	}
 }
 
-void fill_canvas(t_map_data *map)
+void	fill_canvas(t_map_data *map)
 {
-	int x = 0;
-	int y = 0;
+	int	x;
+	int	y;
 
+	x = 0;
+	y = 0;
 	while (y < HEIGHT)
 	{
 		while (x < WIDTH)
@@ -91,5 +95,3 @@ void fill_canvas(t_map_data *map)
 		y++;
 	}
 }
-
-
