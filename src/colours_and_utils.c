@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colours.c                                          :+:      :+:    :+:   */
+/*   colours_and_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:54:13 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/20 15:57:47 by liath            ###   ########.fr       */
+/*   Updated: 2024/06/03 16:03:43 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,20 @@ uint32_t	get_colour(char *colour)
 	rgba = ft_pixel_colour(r, g, b, 0xFF);
 	free(col);
 	return (rgba);
+}
+
+float	get_max(float a, float b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
+float	get_mod(float a)
+{
+	if (a < 0)
+		return (-a);
+	else
+		return (a);
 }

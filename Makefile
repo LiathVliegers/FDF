@@ -12,7 +12,7 @@ OBJDIR				= .obj
 SRC_DIR				= src
 SRC						= \
 							allocate.c \
-							colours.c \
+							colours_and_utils.c \
 							debugging.c \
 							defaults.c \
 							draw.c \

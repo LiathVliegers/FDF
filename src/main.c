@@ -3,18 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/20 16:09:31 by liath            ###   ########.fr       */
+/*   Updated: 2024/06/03 16:05:22 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
+void	fill_canvas(t_map_data *map)
+{
+	uint32_t	x;
+	uint32_t	y;
+
+	y = 0;
+	while (y < map->image->height)
+	{
+		x = 0;
+		while (x < map->image->width)
+		{
+			if (x < map->image->width && y < map->image->height)
+				mlx_put_pixel(map->image, x, y, 0x333333FF);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	print_menu(t_map_data *map)
 {
-	map->menu_texture = mlx_load_png("./img/FDF.png");
+	map->menu_texture = mlx_load_png("./img/FDF(3).png");
 	if (!map->menu_texture)
 		ft_exit(7);
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);
@@ -33,6 +52,7 @@ void	create_window(t_map_data *map)
 		ft_exit(1);
 	mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);
 	print_menu(map);
+	fill_canvas(map);
 	draw_fdf(map);
 	mlx_loop_hook(map->window, key_is_pressed, map);
 	mlx_loop(map->window);

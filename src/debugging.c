@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debugging.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:48:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/22 17:18:28 by liath            ###   ########.fr       */
+/*   Updated: 2024/06/03 15:59:00 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,5 @@ void	rose_curve(t_map_data *map)
 		mlx_put_pixel(map->image, x + (WIDTH / 2), y + (HEIGHT / 2), colour);
 		angle += 0.001;
 		colour += 2550;
-	}
-}
-
-void	fill_canvas(t_map_data *map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (y < HEIGHT)
-	{
-		while (x < WIDTH)
-		{
-			mlx_put_pixel(map->image, x, y, 0x000000);
-			x++;
-		}
-		y++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:55:31 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/21 18:36:51 by liath            ###   ########.fr       */
+/*   Updated: 2024/06/03 16:05:11 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	key_action_two(int key, t_map_data *map)
 	if (key == MLX_KEY_ESCAPE)
 		mlx_close_window(map->window);
 	if (key == MLX_KEY_I)
-		map->is_isometric = 1;
-	if (key == MLX_KEY_O)
-		map->is_isometric = 0;
+		map->is_isometric = true;
+	if (key == MLX_KEY_P)
+		map->is_isometric = false;
 	if (key == MLX_KEY_R)
 		set_position(map);
 }
@@ -54,7 +54,7 @@ int	what_key(t_map_data *map)
 	const int	keys[] = {MLX_KEY_ESCAPE, MLX_KEY_Z, MLX_KEY_X, \
 	MLX_KEY_RIGHT, MLX_KEY_LEFT, MLX_KEY_DOWN, MLX_KEY_UP, \
 	MLX_KEY_W, MLX_KEY_S, MLX_KEY_D, MLX_KEY_A, \
-	MLX_KEY_I, MLX_KEY_O, MLX_KEY_R, 0};
+	MLX_KEY_I, MLX_KEY_P, MLX_KEY_R, 0};
 
 	i = 0;
 	while (keys[i] != 0)
@@ -77,9 +77,7 @@ void	key_is_pressed(void *data)
 	{
 		key_action(key, map);
 		key_action_two(key, map);
-		mlx_delete_image(map->window, map->image);
-		map->image = mlx_new_image(map->window, IMG_WIDTH, HEIGHT);
-		mlx_image_to_window(map->window, map->image, MENU_WIDTH, 0);
+		fill_canvas(map);
 		draw_fdf(map);
 	}
 }

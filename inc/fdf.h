@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:30:14 by liath             #+#    #+#             */
-/*   Updated: 2024/05/20 16:30:17 by liath            ###   ########.fr       */
+/*   Updated: 2024/06/03 16:04:40 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 # define FDF_H
 
 // window and menu size CODAM:
-// # define WIDTH 3500
-// # define HEIGHT 2000
+# define WIDTH 3500
+# define HEIGHT 2000
 
-// # define MENU_WIDTH 700
-// # define IMG_WIDTH 2800
+# define MENU_WIDTH 700
+# define IMG_WIDTH 2800
 
 // window and menu size HOME:
-# define WIDTH 1750
-# define HEIGHT 800
+// # define WIDTH 1750
+// # define HEIGHT 800
 
-# define MENU_WIDTH 350
-# define IMG_WIDTH 1400
+// # define MENU_WIDTH 350
+// # define IMG_WIDTH 1400
 
 // # define MENU_WIDTH (WIDTH / 5)
 // # define IMG_WIDTH (WIDTH - MENU_WIDTH)
 
 # include <MLX42/MLX42.h>
 # include <math.h>
+# include <stdbool.h>
 # include "lib_liath.h"
 
 typedef struct s_point
@@ -39,7 +40,7 @@ typedef struct s_point
 	float		x;
 	float		y;
 	float		z;
-	int			last_point;
+	bool		last_point;
 	uint32_t	colour;
 }	t_point;
 
@@ -59,10 +60,12 @@ typedef struct s_map_data
 
 	float			scale;
 	float			z_scale;
+	float			centre_x;
+	float			centre_y;
 	float			angle;
 	int				x_offset;
 	int				y_offset;
-	int				is_isometric;
+	bool			is_isometric;
 }	t_map_data;
 
 uint32_t	get_colour(char *colour);
@@ -72,6 +75,9 @@ int			get_g(int rgba);
 int			get_b(int rgba);
 int			get_a(int rgba);
 void		draw_fdf(t_map_data *map);
+float		get_max(float a, float b);
+float		get_mod(float a);
+
 
 void		set_defaults(char *file_path, t_map_data *map);
 void		set_position(t_map_data *map);
@@ -95,5 +101,4 @@ void		ft_exit(int error_code);
 void		print_map(t_map_data *map);
 void		rose_curve(t_map_data *map);
 void		fill_canvas(t_map_data *map);
-
 #endif
