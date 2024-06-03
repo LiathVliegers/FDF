@@ -6,27 +6,41 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:17:15 by livliege          #+#    #+#             */
-/*   Updated: 2024/06/03 16:03:35 by livliege         ###   ########.fr       */
+/*   Updated: 2024/06/03 18:34:18 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
+void	parallel_calculation(t_point *a, t_point *b, t_map_data *map)
+{
+	float	angle;
+
+	angle = map->angle;
+	map->temp_ax = a->x - map->centre_x;
+	map->temp_ay = a->y - map->centre_y;
+	map->temp_bx = b->x - map->centre_x;
+	map->temp_by = b->y - map->centre_y;
+	map->new_ax = map->temp_ax * cos(angle) - map->temp_ay * sin(angle);
+	map->new_ay = map->temp_ax * sin(angle) + map->temp_ay * cos(angle);
+	map->new_bx = map->temp_bx * cos(angle) - map->temp_by * sin(angle);
+	map->new_by = map->temp_bx * sin(angle) + map->temp_by * cos(angle);
+	a->x = map->new_ax + map->centre_x;
+	a->y = map->new_ay + map->centre_y;
+	b->x = map->new_bx + map->centre_x;
+	b->y = map->new_by + map->centre_y;
+}
+
 void	isometric_calculation(t_point *a, t_point *b, t_map_data *map)
 {
-	float	temp_ax;
-	float	temp_ay;
-	float	temp_bx;
-	float	temp_by;
-
-	temp_ax = a->x - map->centre_x;
-	temp_ay = a->y - map->centre_y;
-	temp_bx = b->x - map->centre_x;
-	temp_by = b->y - map->centre_y;
-	a->x = (temp_ax - temp_ay) * cos(map->angle);
-	a->y = (temp_ax + temp_ay) * sin(map->angle) - a->z;
-	b->x = (temp_bx - temp_by) * cos(map->angle);
-	b->y = (temp_bx + temp_by) * sin(map->angle) - b->z;
+	map->temp_ax = a->x - map->centre_x;
+	map->temp_ay = a->y - map->centre_y;
+	map->temp_bx = b->x - map->centre_x;
+	map->temp_by = b->y - map->centre_y;
+	a->x = (map->temp_ax - map->temp_ay) * cos(map->angle);
+	a->y = (map->temp_ax + map->temp_ay) * sin(map->angle) - a->z;
+	b->x = (map->temp_bx - map->temp_by) * cos(map->angle);
+	b->y = (map->temp_bx + map->temp_by) * sin(map->angle) - b->z;
 	a->x += map->centre_x;
 	a->y += map->centre_y;
 	b->x += map->centre_x;
@@ -45,6 +59,8 @@ void	init_point_values(t_point *a, t_point *b, t_map_data *map)
 	b->z *= map->z_scale;
 	if (map->is_isometric == true)
 		isometric_calculation(a, b, map);
+	if (map->is_isometric == false)
+		parallel_calculation(a, b, map);
 	a->x += map->x_offset;
 	a->y += map->y_offset;
 	b->x += map->x_offset;

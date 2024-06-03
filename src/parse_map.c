@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/20 15:48:54 by liath            ###   ########.fr       */
+/*   Updated: 2024/06/03 19:08:05 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*validate_map_name(char *file_path)
 	while (ext[i])
 	{
 		if (j == 0 || file_path[j] != ext[i])
-			ft_exit(4);
+			ft_exit(3);
 		j--;
 		i++;
 	}
@@ -43,7 +43,7 @@ void	fill_point_values(t_point *points, char **split_line, int y)
 	{
 		points[i].x = i;
 		points[i].y = y;
-		points[i].last_point = 0;
+		points[i].last_point = false;
 		points[i].z = ft_atoi(split_line[i]);
 		comma = ft_strchr(split_line[i], ',');
 		if (comma)
@@ -52,7 +52,7 @@ void	fill_point_values(t_point *points, char **split_line, int y)
 			points[i].colour = 0xFFFFFFFF;
 		i++;
 	}
-	points[i - 1].last_point = 1;
+	points[i - 1].last_point = true;
 }
 
 void	parse_map_points(t_map_data *map)

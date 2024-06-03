@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:30:14 by liath             #+#    #+#             */
-/*   Updated: 2024/06/03 16:04:40 by livliege         ###   ########.fr       */
+/*   Updated: 2024/06/03 18:39:59 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@ typedef struct s_map_data
 	int				x_offset;
 	int				y_offset;
 	bool			is_isometric;
+
+	float			temp_ax;
+	float			temp_ay;
+	float			temp_bx;
+	float			temp_by;
+	float			new_ax;
+	float			new_ay;
+	float			new_bx;
+	float			new_by;
 }	t_map_data;
 
 uint32_t	get_colour(char *colour);
@@ -74,10 +83,12 @@ int			get_r(int rgba);
 int			get_g(int rgba);
 int			get_b(int rgba);
 int			get_a(int rgba);
+
+void		fill_canvas(t_map_data *map);
 void		draw_fdf(t_map_data *map);
+
 float		get_max(float a, float b);
 float		get_mod(float a);
-
 
 void		set_defaults(char *file_path, t_map_data *map);
 void		set_position(t_map_data *map);
@@ -98,7 +109,6 @@ void		ft_free_lines_matrix(char **map_lines, t_map_data *map);
 void		ft_exit(int error_code);
 
 // debugging:
-void		print_map(t_map_data *map);
-void		rose_curve(t_map_data *map);
-void		fill_canvas(t_map_data *map);
+// void		print_map(t_map_data *map);
+// void		rose_curve(t_map_data *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:13:17 by livliege          #+#    #+#             */
-/*   Updated: 2024/06/03 16:05:22 by livliege         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:23:22 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	fill_canvas(t_map_data *map)
 
 void	print_menu(t_map_data *map)
 {
-	map->menu_texture = mlx_load_png("./img/FDF(3).png");
+	map->menu_texture = mlx_load_png("./img/FDF.png");
 	if (!map->menu_texture)
 		ft_exit(7);
 	map->menu_image = mlx_texture_to_image(map->window, map->menu_texture);

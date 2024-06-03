@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_and_clear.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liath <liath@student.42.fr>                +#+  +:+       +#+        */
+/*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:36:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/05/22 17:05:03 by liath            ###   ########.fr       */
+/*   Updated: 2024/06/03 19:08:12 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_exit(int error_code)
 
 	if (error_code == 1)
 		error_message = "ERROR: Incorrect number of arguments\n \
-		Please include the path to a .fdf map file as argument\n";
+		Please include the path to a valid .fdf map file as argument\n";
 	else if (error_code == 2)
 		error_message = "ERROR: Memory allocation failed\n";
 	else if (error_code == 3)
@@ -28,7 +28,7 @@ void	ft_exit(int error_code)
 	else if (error_code == 5)
 		error_message = "ERROR: Empty map\n";
 	else if (error_code == 6)
-		error_message = "ERROR: Lines in file are not consistent\n";
+		error_message = "ERROR: Inconsistent lines in file\n";
 	else if (error_code == 7)
 		error_message = "ERROR: Loading the menu failed\n";
 	else

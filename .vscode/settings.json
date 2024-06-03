@@ -3,6 +3,7 @@
 		"ranges": "c",
 		"numbers": "c",
 		"random": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"fdf.h": "c"
 	}
 }
