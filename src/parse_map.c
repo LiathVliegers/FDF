@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:50:29 by livliege          #+#    #+#             */
-/*   Updated: 2024/06/03 19:08:05 by livliege         ###   ########.fr       */
+/*   Updated: 2024/06/04 20:42:34 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*validate_map_name(char *file_path)
 	while (ext[i])
 	{
 		if (j == 0 || file_path[j] != ext[i])
-			ft_exit(3);
+			ft_exit("Empty map, invalid map, or incorrect path to file\n");
 		j--;
 		i++;
 	}
@@ -63,7 +63,7 @@ void	parse_map_points(t_map_data *map)
 
 	map->points = (t_point **)malloc(sizeof (t_point *) * map->height);
 	if (map->points == NULL)
-		ft_exit(2);
+		ft_exit("Malloc allocation failed\n");
 	i = 0;
 	while (i < map->height)
 	{
@@ -74,10 +74,10 @@ void	parse_map_points(t_map_data *map)
 		if (map->width == 0)
 			map->width = width;
 		if (width > map->width)
-			ft_exit(6);
+			ft_exit("Inconsistent lines in file\n");
 		map->points[i] = (t_point *)malloc(sizeof (t_point) * width);
 		if (map->points == NULL)
-			ft_exit(2);
+			ft_exit("Malloc allocation failed\n");
 		fill_point_values(map->points[i], split_line, i);
 		ft_free_matrix(split_line);
 		i++;
@@ -98,7 +98,7 @@ void	parse_map_lines(t_map_data *map)
 		if (map->full_map_buffer[i] == '\n')
 		{
 			if (map->full_map_buffer[i + 1] == '\n')
-				ft_exit(4);
+				ft_exit("Empty map, invalid map, or incorrect path to file\n");
 			allocate_and_copy_line(map, i, j, width);
 			width = 0;
 			j++;
@@ -119,11 +119,11 @@ void	read_map(t_map_data *map, char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
-		ft_exit(3);
+		ft_exit("Reading the file failed\n");
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
-		ft_exit(5);
+		ft_exit("Empty map, invalid map, or incorrect path to file\n");
 		close(fd);
 	}
 	temp = ft_strjoin("", "");

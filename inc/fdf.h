@@ -6,7 +6,7 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:30:14 by liath             #+#    #+#             */
-/*   Updated: 2024/06/03 18:39:59 by livliege         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:03:22 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void		clear_everything(t_map_data *map);
 void		ft_free_points_matrix(t_point **points, t_map_data *map);
 void		ft_free_matrix(char **lines);
 void		ft_free_lines_matrix(char **map_lines, t_map_data *map);
-void		ft_exit(int error_code);
+void		ft_exit(char *error_message);
 
 // debugging:
 // void		print_map(t_map_data *map);

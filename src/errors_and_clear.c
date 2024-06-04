@@ -6,34 +6,24 @@
 /*   By: livliege <livliege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:36:48 by livliege          #+#    #+#             */
-/*   Updated: 2024/06/03 19:08:12 by livliege         ###   ########.fr       */
+/*   Updated: 2024/06/04 21:02:44 by livliege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	ft_exit(int error_code)
+void	ft_exit(char *error_message)
 {
-	char	*error_message;
+	char	*error_mess;
 
-	if (error_code == 1)
-		error_message = "ERROR: Incorrect number of arguments\n \
-		Please include the path to a valid .fdf map file as argument\n";
-	else if (error_code == 2)
-		error_message = "ERROR: Memory allocation failed\n";
-	else if (error_code == 3)
-		error_message = "ERROR: Reading the file failed\n";
-	else if (error_code == 4)
-		error_message = "ERROR: Invalid map\n";
-	else if (error_code == 5)
-		error_message = "ERROR: Empty map\n";
-	else if (error_code == 6)
-		error_message = "ERROR: Inconsistent lines in file\n";
-	else if (error_code == 7)
-		error_message = "ERROR: Loading the menu failed\n";
-	else
-		error_message = "ERROR: Unknown error\n";
-	ft_putstr_fd(error_message, STDERR_FILENO);
+	error_mess = ft_strjoin("ERROR: ", error_message);
+	if (error_mess == NULL)
+	{
+		ft_putstr_fd("Malloc allocation failed\n", STDERR_FILENO);
+		exit(1);
+	}
+	ft_putstr_fd(error_mess, STDERR_FILENO);
+	free(error_mess);
 	exit(1);
 }
 
